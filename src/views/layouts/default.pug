@@ -1,0 +1,34 @@
+doctype html
+
+block vars
+include ../components/_mixins
+
+html(lang="ru")
+	head
+		meta(charset="UTF-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(name="description" content="")
+		meta(name="keywords" content="")
+		meta(property="og:image" content="images/logo.svg")
+		meta(name="format-detection" content="telephone=no")
+		link(href="css/main.css" rel="stylesheet")
+		link(rel="preconnect" href="https://fonts.gstatic.com")
+		link(href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet")
+		//title= `${page.title}`
+
+	body
+		block header
+			include ../partials/_header
+
+		main.main.dashboard-page-bg
+			block main
+
+		block footer
+			include ../partials/_footer
+
+		block modals
+
+
+		script(src="js/main.js")
+
+		block scripts
