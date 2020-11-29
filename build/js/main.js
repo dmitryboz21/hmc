@@ -244,7 +244,7 @@ $(document).ready(function () {
 					}
 					delta_first = first_dfEnd - first_dfStart;
 
-					delta_finish = finish_dfEnd - finish_dfStart;
+					delta_finish = finish_dfEnd - first_dfEnd;
 
 					//console.log('-------',delta_first,(finish_dfEnd - finish_dfStart), '-------');
 					duration=duration / (Math.PI * 2) * (delta_finish+delta_first)/2;
@@ -275,7 +275,7 @@ $(document).ready(function () {
 
 
 						current_dfStart = (((time - startTime) / duration * delta_first) + first_dfStart + interface.skipRadians);
-						current_dfEnd = (((time - startTime) / duration * delta_finish) + finish_dfStart + interface.skipRadians);
+						current_dfEnd = (((time - startTime) / duration * delta_finish) + first_dfEnd + interface.skipRadians);
 
 						current_dfStart = current_dfStart<finish_dfStart?current_dfStart:finish_dfStart;
 						current_dfEnd = current_dfEnd<finish_dfEnd?current_dfEnd:finish_dfEnd;
@@ -332,11 +332,13 @@ $(document).ready(function () {
 
 	//drawDount.drawPart(0, Math.PI * 2, 1, 1);
 	setTimeout(() => {
-		drawDount.animate('first', 0);
+		//drawDount.animate('first', 0);
+
+		drawDount.animate('change', 1,0);
 	}, 1000);
-	setTimeout(() => {
+	/*setTimeout(() => {
 		drawDount.animate('change', 0,1);
-	}, 3000);
+	}, 3000);*/
 
 	///////////////CHART.JS
 
