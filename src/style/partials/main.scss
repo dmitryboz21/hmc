@@ -483,6 +483,7 @@ a {
 	border-bottom: 1px solid #ECECEC;
 	padding-bottom: 7px;
 	color: #D0D0D0;
+	position: relative;
 
 	transition-duration: .3s;
 
@@ -511,6 +512,12 @@ a {
 		min-width: 75px;
 		margin-left: 10px;
 		text-align: right;
+	}
+	&__progess{
+		position: absolute;
+		bottom: 1;
+		left: 0;
+		height: 1px;
 	}
 }
 
@@ -544,6 +551,9 @@ a {
 	top: -3px;
 	width: calc(100% + 6px);
 	height: calc(100% + 6px);
+	cursor: pointer;
+	border-radius: 50%;
+	overflow: hidden;
 }
 
 #numpurchases-chart-active-level {

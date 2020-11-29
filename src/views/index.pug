@@ -113,6 +113,30 @@ block main
 								.dshb-stat2-item__type пригласивших
 								.dshb-stat2-item__more-digits 70 567 880
 
+	script.
+		//массив с начальным и конечным цветом градиентов(начальный цвет - цвет тени с блюром). лучше задавать в rgb или hex
+		const backgroundColorsForGrad = [
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['OrangeRed', 'red'],
+			['CadetBlue', 'blue'],
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['OrangeRed', 'red'],
+			['CadetBlue', 'blue'],
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['OrangeRed', 'red'],
+			['CadetBlue', 'blue'],
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['OrangeRed', 'red'],
+			['CadetBlue', 'blue'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['rgb(180,246,165)', 'rgb(98,219,70)']
+		];
+		//Если что, эти значения относительны, и приводятся к проценту от их суммы, так что их сумма не должна быь равна 100. Эта фишка на случай если самые мелкие окажутся слишком тонкими, тогда ты на бекенде сможешь выводитьих сюда например через функцию max(реальное_значение, какая_то_минималка), чтобы слишком мелкие были больше и одного размера
+		const chartData = [41.27,11.73,7.28,6.57,6.06,5.23,5.10,4.20,3.99,3.98,1.33,1.30,0.59,0.56,0.35,0.23,0.17,0.05];
 
 	section.numpurchases
 		.dashboard-container
@@ -123,61 +147,82 @@ block main
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" data-hover-color="#61DB45")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						.numpurchases-info-item__value 41 ,27%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" data-hover-color="#FF7F00")
 						.numpurchases-info-item__name Кафе и рестораны
 						.numpurchases-info-item__value 11 ,73%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" data-hover-color="#2FC9C8")
 						.numpurchases-info-item__name Прочее
 						.numpurchases-info-item__value 7 ,28%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="4" data-hover-color="#0B8E42")
 						.numpurchases-info-item__name Развлечения и спорт
 						.numpurchases-info-item__value 6 ,57%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" data-hover-color="#FFC219")
 						.numpurchases-info-item__name Пополнение мобильного
 						.numpurchases-info-item__value 6 ,06%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" data-hover-color="#61DB45")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						.numpurchases-info-item__value 41 ,27%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" data-hover-color="#FF7F00")
 						.numpurchases-info-item__name Кафе и рестораны
 						.numpurchases-info-item__value 11 ,73%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" data-hover-color="#2FC9C8")
 						.numpurchases-info-item__name Прочее
 						.numpurchases-info-item__value 7 ,28%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="4" data-hover-color="#0B8E42")
 						.numpurchases-info-item__name Развлечения и спорт
 						.numpurchases-info-item__value 6 ,57%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" data-hover-color="#FFC219")
 						.numpurchases-info-item__name Пополнение мобильного
 						.numpurchases-info-item__value 6 ,06%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" data-hover-color="#61DB45")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						.numpurchases-info-item__value 41 ,27%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" data-hover-color="#FF7F00")
 						.numpurchases-info-item__name Кафе и рестораны
 						.numpurchases-info-item__value 11 ,73%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" data-hover-color="#2FC9C8")
 						.numpurchases-info-item__name Прочее
 						.numpurchases-info-item__value 7 ,28%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="4" data-hover-color="#0B8E42")
 						.numpurchases-info-item__name Развлечения и спорт
 						.numpurchases-info-item__value 6 ,57%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" data-hover-color="#FFC219")
 						.numpurchases-info-item__name Пополнение мобильного
 						.numpurchases-info-item__value 6 ,06%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" data-hover-color="#61DB45")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						.numpurchases-info-item__value 41 ,27%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" data-hover-color="#FF7F00")
 						.numpurchases-info-item__name Кафе и рестораны
 						.numpurchases-info-item__value 11 ,73%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" data-hover-color="#2FC9C8")
 						.numpurchases-info-item__name Прочее
 						.numpurchases-info-item__value 7 ,28%
+						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 
 				#numpurchases-chart-wrap.numpurchases-chart-wrap
 					canvas#numpurchases-chart
 					canvas#numpurchases-chart-active-level
+
+					.numpurchases-chart-active-icon
+
 	section.topsellers
 		.dashboard-container.dashboard-container--topsellers
 			h2.dashboard-h2 Топ 5 продавцов по количеству покупок

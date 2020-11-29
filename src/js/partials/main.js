@@ -1,6 +1,7 @@
 var resize_my_canvas;
+var currentIndexOfChart=-1;
 $(document).ready(function () {
-
+	console.log(backgroundColorsForGrad);
 	function roundEven(d) { //округление до четного
 		return Math.round(d / 2) * 2;
 	}
@@ -8,12 +9,13 @@ $(document).ready(function () {
 	var chartWrap = $('#numpurchases-chart-wrap'),
 		chart = $('#numpurchases-chart'),
 		topLayer = $('#numpurchases-chart-active-level'),
+		numpurchasesInfo = $('.numpurchases-info'),
 		chartWrapH,
 		chartWrapW;
 
 	resize_my_canvas = function () {
-		chartWrapH = roundEven(chartWrap.height());
-		chartWrapW = roundEven(chartWrap.width());
+		chartWrapH = roundEven(chartWrap.height()+6);
+		chartWrapW = roundEven(chartWrap.width()+6);
 		chart.attr('height', chartWrapH);
 		chart.attr('width', chartWrapW);
 		topLayer.attr('height', chartWrapH);
@@ -40,7 +42,7 @@ $(document).ready(function () {
 		}
 		return (sum);
 	}
-
+/*
 	var backgroundColorsForGrad = [
 		['rgb(180,246,165)', 'rgb(98,219,70)'],
 		['rgb(255,170,86)', 'rgb(255,127,0)'],
@@ -48,8 +50,8 @@ $(document).ready(function () {
 		['rgb(255,170,86)', 'rgb(255,127,0)'],
 		['rgb(180,246,165)', 'rgb(98,219,70)']
 	]
-
-	var chartData = [41.27, 11.73, 7.28, 6.57, 6.06];
+*/
+	//var chartData = [41.27, 11.73, 7.28, 6.57, 6.06];
 	var chartDataInPercent = [];
 	var chartDataSum = arraySum(chartData);
 	var chartDataPercent = chartDataSum / 100;
@@ -178,7 +180,8 @@ $(document).ready(function () {
 					time = undefined,
 					startTime = null,
 					endPos = 100, // процент от необходимой длины сектора
-					duration = 2000, // в миллисекундах на весь круг
+					maxDuration = 1500, //максимальное значение продолжительности анимации
+					duration = 1000, // продожительность в миллисекундах на весь круг
 					first_dfStart = undefined,
 					first_dfEnd = undefined,
 					delta_first = undefined,
@@ -193,7 +196,8 @@ $(document).ready(function () {
 
 					nextLower;
 
-
+				chart.css('pointer-events','none');
+				numpurchasesInfo.css('pointer-events','none');
 
 
 				if (animType == 'first') { //отрисовка первого фрагмента
@@ -210,7 +214,8 @@ $(document).ready(function () {
 						df += (Math.PI * 2) * (this.parts[i] / 100);
 					}
 					delta_first = first_dfEnd - first_dfStart;
-					duration = duration / (Math.PI * 2) * delta_first;
+					duration = (duration / (Math.PI * 2) * delta_first);
+					duration=duration>maxDuration?maxDuration:duration;
 				} else { //переключение на другой элемент
 
 					var df = -(Math.PI * 2) * (25 / 100);
@@ -239,6 +244,7 @@ $(document).ready(function () {
 
 					//console.log('-------',delta_first,(finish_dfEnd - finish_dfStart), '-------');
 					duration = duration / (Math.PI * 2) * (((delta_finish / (nextLower ? Math.PI * 4 : 1) + delta_first) / 2));
+					duration=duration>maxDuration?maxDuration:duration;
 				}
 
 
@@ -286,10 +292,19 @@ $(document).ready(function () {
 						if (current_dfEnd < first_dfEnd) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
 						}
+						else{
+							chart.css('pointer-events','all');
+							numpurchasesInfo.css('pointer-events','all');
+						}
 					} else { //переключение
 						render();
 						if (current_dfStart < finish_dfStart) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
+						}
+						else{
+							chart.css('pointer-events','all');
+							numpurchasesInfo.css('pointer-events','all');
+
 						}
 					}
 
@@ -317,11 +332,14 @@ $(document).ready(function () {
 		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 		drawDount.setGradients(data);
 	});
+
+
 	//console.log(chartDataInPercent);
 
 	//drawDount.drawIndex(data, 0);
 
 	//drawDount.drawPart(0, Math.PI * 2, 1, 1);
+	/*
 	setTimeout(() => {
 		//drawDount.animate('first', 0);
 
@@ -331,7 +349,7 @@ $(document).ready(function () {
 		//		drawDount.animate('change', 0,1);
 		drawDount.animate('change', 1, 4);
 	}, 3000);
-
+*/
 	///////////////CHART.JS
 
 	var myChart = new Chart(ctx, {
@@ -340,7 +358,7 @@ $(document).ready(function () {
 
 		// The data for our dataset
 		data: {
-			labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
+			//labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
 			datasets: [{
 				label: 'My First dataset',
 				backgroundColor: '#4F5566',
@@ -369,11 +387,20 @@ $(document).ready(function () {
 				var dataset;
 
 				if (elements.length) {
-					console.log(elements[0]);
+					//console.log(elements[0]);
 
 					//var index = elements[0]._index;
 					//datasetIndex = elements[0]._datasetIndex;
 
+					if (currentIndexOfChart === -1) {
+						currentIndexOfChart = elements[0]._index;
+						drawDount.animate('first', currentIndexOfChart);
+					}
+					else{
+
+						drawDount.animate('change', currentIndexOfChart,  elements[0]._index);
+						currentIndexOfChart = elements[0]._index;
+					}
 
 				}
 
