@@ -214,7 +214,9 @@ $(document).ready(function () {
 	};
 
 	var drawDount = new drawdountChart(chart);
-	var chartStrokeW = 48 * chartWrapW / 100 / 2;//69.3
+	var chartStrokeW = 66 * chartWrapW / 100 / 2;//66
+
+	console.log(chartStrokeW);
 	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW, "rgba(255,255,255,0)");
 	console.log(chartDataInPercent);
 	//drawDount.draw(data);
