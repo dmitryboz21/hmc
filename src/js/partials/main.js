@@ -1,7 +1,8 @@
 var resize_my_canvas;
-var currentIndexOfChart=-1;
+var currentIndexOfChart = -1;
 $(document).ready(function () {
 	console.log(backgroundColorsForGrad);
+
 	function roundEven(d) { //округление до четного
 		return Math.round(d / 2) * 2;
 	}
@@ -14,8 +15,8 @@ $(document).ready(function () {
 		chartWrapW;
 
 	resize_my_canvas = function () {
-		chartWrapH = roundEven(chartWrap.height()+6);
-		chartWrapW = roundEven(chartWrap.width()+6);
+		chartWrapH = roundEven(chartWrap.height() + 6);
+		chartWrapW = roundEven(chartWrap.width() + 6);
 		chart.attr('height', chartWrapH);
 		chart.attr('width', chartWrapW);
 		topLayer.attr('height', chartWrapH);
@@ -42,15 +43,15 @@ $(document).ready(function () {
 		}
 		return (sum);
 	}
-/*
-	var backgroundColorsForGrad = [
-		['rgb(180,246,165)', 'rgb(98,219,70)'],
-		['rgb(255,170,86)', 'rgb(255,127,0)'],
-		['rgb(180,246,165)', 'rgb(98,219,70)'],
-		['rgb(255,170,86)', 'rgb(255,127,0)'],
-		['rgb(180,246,165)', 'rgb(98,219,70)']
-	]
-*/
+	/*
+		var backgroundColorsForGrad = [
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['rgb(180,246,165)', 'rgb(98,219,70)']
+		]
+	*/
 	//var chartData = [41.27, 11.73, 7.28, 6.57, 6.06];
 	var chartDataInPercent = [];
 	var chartDataSum = arraySum(chartData);
@@ -196,8 +197,8 @@ $(document).ready(function () {
 
 					nextLower;
 
-				chart.css('pointer-events','none');
-				numpurchasesInfo.css('pointer-events','none');
+				chart.css('pointer-events', 'none');
+				numpurchasesInfo.css('pointer-events', 'none');
 
 
 				if (animType == 'first') { //отрисовка первого фрагмента
@@ -215,7 +216,7 @@ $(document).ready(function () {
 					}
 					delta_first = first_dfEnd - first_dfStart;
 					duration = (duration / (Math.PI * 2) * delta_first);
-					duration=duration>maxDuration?maxDuration:duration;
+					duration = duration > maxDuration ? maxDuration : duration;
 				} else { //переключение на другой элемент
 
 					var df = -(Math.PI * 2) * (25 / 100);
@@ -244,7 +245,7 @@ $(document).ready(function () {
 
 					//console.log('-------',delta_first,(finish_dfEnd - finish_dfStart), '-------');
 					duration = duration / (Math.PI * 2) * (((delta_finish / (nextLower ? Math.PI * 4 : 1) + delta_first) / 2));
-					duration=duration>maxDuration?maxDuration:duration;
+					duration = duration > maxDuration ? maxDuration : duration;
 				}
 
 
@@ -291,19 +292,17 @@ $(document).ready(function () {
 						render();
 						if (current_dfEnd < first_dfEnd) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
-						}
-						else{
-							chart.css('pointer-events','all');
-							numpurchasesInfo.css('pointer-events','all');
+						} else {
+							chart.css('pointer-events', 'all');
+							numpurchasesInfo.css('pointer-events', 'all');
 						}
 					} else { //переключение
 						render();
 						if (current_dfStart < finish_dfStart) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
-						}
-						else{
-							chart.css('pointer-events','all');
-							numpurchasesInfo.css('pointer-events','all');
+						} else {
+							chart.css('pointer-events', 'all');
+							numpurchasesInfo.css('pointer-events', 'all');
 
 						}
 					}
@@ -395,37 +394,90 @@ $(document).ready(function () {
 					if (currentIndexOfChart === -1) {
 						currentIndexOfChart = elements[0]._index;
 						drawDount.animate('first', currentIndexOfChart);
-					}
-					else{
+					} else {
 
-						drawDount.animate('change', currentIndexOfChart,  elements[0]._index);
+						drawDount.animate('change', currentIndexOfChart, elements[0]._index);
 						currentIndexOfChart = elements[0]._index;
 					}
 
 				}
 
-				myChart.update();
-			}
+				//myChart.update();
+			},
+
+			animation: {
+				duration: 0 // general animation time
+			},
+			/*	hover: {
+					animationDuration: 0 // duration of animations when hovering an item
+				},*/
+			responsiveAnimationDuration: 0 // animation duration after a resize
 		}
 	});
 
 
 	///////////////events
 
-
+	function triggerChartHover(idx) {
+		var meta = myChart.getDatasetMeta(0),
+			rect = myChart.canvas.getBoundingClientRect(),
+			point = meta.data[idx].getCenterPoint(),
+			evt = new MouseEvent('mousemove', {
+				clientX: rect.left + point.x,
+				clientY: rect.top + point.y
+			}),
+			node = myChart.canvas;
+		node.dispatchEvent(evt);
+	}
 	$('.js-numpurchases-info-item').on('mouseenter', function () {
-		$(this).css('color', $(this).attr('data-hover-color'));
+		var newIndex = parseInt($(this).attr('data-target'));
+
+		function triggerChartHover(idx) {
+			var meta = myChart.getDatasetMeta(0),
+				rect = myChart.canvas.getBoundingClientRect(),
+				point = meta.data[idx].getCenterPoint(),
+				evt = new MouseEvent('mousemove', {
+					clientX: rect.left + point.x,
+					clientY: rect.top + point.y
+				}),
+				node = myChart.canvas;
+			node.dispatchEvent(evt);
+		}
+		triggerChartHover(newIndex);
 	});
 	$('.js-numpurchases-info-item').on('mouseleave', function () {
-		$(this).css('color', '');
+		var newIndex = parseInt($(this).attr('data-target'));
+
+		function triggerChartHover(idx) {
+			var meta = myChart.getDatasetMeta(0),
+				rect = myChart.canvas.getBoundingClientRect(),
+				point = meta.data[idx].getCenterPoint(),
+				evt = new MouseEvent('mousemove', {
+					clientX: rect.left -999,
+					clientY: rect.top  -999
+				}),
+				node = myChart.canvas;
+			node.dispatchEvent(evt);
+		}
+		triggerChartHover(newIndex);
 	});
 
 
 	$('.js-numpurchases-info-item').on('click', function () {
 		if (!$(this).hasClass('numpurchases-info-item--active')) {
-			$(this).addClass('numpurchases-info-item--active').css('border-color', $(this).attr('data-hover-color'));
+			$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
 
-			$(this).siblings().removeClass('numpurchases-info-item--active').css('border-color', '');
+			$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');
+
+			var newIndex = parseInt($(this).attr('data-target'));
+			if (currentIndexOfChart === -1) {
+				currentIndexOfChart = newIndex;
+				drawDount.animate('first', currentIndexOfChart);
+			} else {
+
+				drawDount.animate('change', currentIndexOfChart, newIndex);
+				currentIndexOfChart = newIndex;
+			}
 		}
 	});
 

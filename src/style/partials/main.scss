@@ -484,6 +484,13 @@ a {
 	padding-bottom: 7px;
 	color: #D0D0D0;
 	position: relative;
+	cursor: pointer;
+	/*&.numpurchases-info-item--active{
+		pointer-events: none;
+	}*/
+	&:not(:hover) {
+		color: #D0D0D0 !important;
+	}
 
 	transition-duration: .3s;
 
@@ -513,11 +520,13 @@ a {
 		margin-left: 10px;
 		text-align: right;
 	}
-	&__progess{
+
+	&__progess {
 		position: absolute;
-		bottom: 1;
+		bottom: -1px;
 		left: 0;
 		height: 1px;
+		transition-duration: .5s;
 	}
 }
 
