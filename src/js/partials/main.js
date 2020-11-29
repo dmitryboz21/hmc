@@ -97,125 +97,281 @@ $(document).ready(function () {
 				this.to = to;
 				this.lineWidth = lineWidth;
 				this.strockStyle = strockStyle;
+				canvas.lineWidth = this.lineWidth;
+				canvas.shadowBlur = 15;
+
+
+
 			},
 
+			this.setGradients = function (data) {
 
+				this.numberOfParts = data.numberOfParts;
+				this.parts = data.parts.pt;
+				var gradients = data.parts.grad;
 
-			this.drawIndex = function (data, index = 0, start = 0, end = 100) {
-				canvas.lineWidth = this.lineWidth;
-				canvas.strokeStyle = this.strockStyle;
+				this.gradients = [];
+				this.shadows = [];
 
-				var numberOfParts = data.numberOfParts;
-				var parts = data.parts.pt;
+				//компенсация пробелов между секторами
+				this.oneGradInPx = 2 * Math.PI * (chartWrapW / 2) / 360; //пикселей внешней окружности на один градус
+				this.skipRadians = angleToRad(chartItemSpace / this.oneGradInPx);
+				//end компенсация пробелов между секторами
+
 
 				var df = -(Math.PI * 2) * (25 / 100);
+				for (var i = 0; i < this.numberOfParts; i++) { //numberOfParts
 
-				var oneGradInPx = 2 * Math.PI * (chartWrapW / 2) / 360;
-				var skipRadians = angleToRad(chartItemSpace / oneGradInPx);
-				console.log(skipRadians);
+					var startPoint = getPoint(this.x, this.y, this.radius + 0.5 * this.lineWidth, df);
+					var endPoint = getPoint(this.x, this.y, this.radius + 0.5 * this.lineWidth, df + (Math.PI * 2) * (this.parts[i] / 100));
 
-				for (var i = 0; i < numberOfParts; i++) { //numberOfParts
-					if (i == index) {
-						canvas.lineWidth = this.lineWidth;
-						canvas.beginPath();
+					this.gradients[i] = canvas.createLinearGradient(startPoint[0], startPoint[1], endPoint[0], endPoint[1]);
+					this.gradients[i].addColorStop(0, gradients[i][0]);
+					this.gradients[i].addColorStop(1, gradients[i][1]);
 
-						canvas.shadowColor = backgroundColorsForGrad[i][0];
-						canvas.shadowBlur = 15;
-						canvas.arc(this.x, this.y, this.radius, df + skipRadians / 2, df + (Math.PI * 2) * (parts[i] / 100) - skipRadians / 2);
+					this.shadows[i] = gradients[i][0];
 
-						var startPoint = getPoint(this.x, this.y, this.radius + 0.5 * this.lineWidth, df);
-						var endPoint = getPoint(this.x, this.y, this.radius + 0.5 * this.lineWidth, df + (Math.PI * 2) * (parts[i] / 100));
-
-
-
-						var gradient = ctx.createLinearGradient(startPoint[0], startPoint[1], endPoint[0], endPoint[1]);
-						gradient.addColorStop(0, backgroundColorsForGrad[i][0]);
-						gradient.addColorStop(1, backgroundColorsForGrad[i][1]);
-						canvas.strokeStyle = gradient;
-						canvas.stroke();
-
-						canvas.closePath();
-
-					}
-
-					df += (Math.PI * 2) * (parts[i] / 100);
+					df += (Math.PI * 2) * (this.parts[i] / 100);
 				}
 			},
 
+			//отрисовать целый сектор
+			this.drawIndex = function (data, index = 0) {
+
+
+				var df = -(Math.PI * 2) * (25 / 100);
+
+				for (var i = 0; i < this.numberOfParts; i++) {
+					if (i == index) {
+						canvas.beginPath();
+						canvas.shadowColor = backgroundColorsForGrad[i][0];
+						canvas.arc(this.x, this.y, this.radius, df + this.skipRadians / 2, df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2);
+						canvas.strokeStyle = this.gradients[i];
+						canvas.stroke();
+						canvas.closePath();
+					}
+
+					df += (Math.PI * 2) * (this.parts[i] / 100);
+				}
+			},
+
+			//отрисовать часть сектора
+			this.drawPart = function (dfStart, dfend, shadowColorIndex, gradIndex, currentSkipRadians = 0) {
+				canvas.beginPath();
+				canvas.shadowColor = backgroundColorsForGrad[shadowColorIndex][0];
+				canvas.arc(this.x, this.y, this.radius, dfStart + currentSkipRadians / 2, dfend - currentSkipRadians / 2);
+				canvas.strokeStyle = this.gradients[gradIndex];
+				canvas.stroke();
+				canvas.closePath();
+			},
+
+
+
 			this.clear = function () {
-				console.log(this.radius*2, this.radius*2);
-				canvas.clearRect(0, 0, canvas.canvas.height+30, canvas.canvas.height+30);
+				canvas.clearRect(0, 0, canvas.canvas.height + 30, canvas.canvas.height + 30);
+			},
+
+
+			this.animate = function (animType, currentIndex, nextIndex = false) {
+				var interface = this,
+
+					time = undefined,
+					startTime = null,
+					endPos = 100, // процент от необходимой длины сектора
+					duration = 2000, // в миллисекундах на весь круг
+					first_dfStart = undefined,
+					first_dfEnd = undefined,
+					delta_first = undefined,
+
+
+					current_dfStart = 0,
+					current_dfEnd = 0,
+
+					finish_dfStart = undefined,
+					finish_dfEnd = undefined,
+					delta_finish = undefined;
+
+
+
+
+				if (animType == 'first') { //отрисовка первого фрагмента
+					var df = -(Math.PI * 2) * (25 / 100);
+
+					for (var i = 0; i < this.numberOfParts; i++) {
+						if (i == currentIndex) {
+							first_dfStart = df + this.skipRadians / 2;
+							first_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
+
+							break;
+						}
+
+						df += (Math.PI * 2) * (this.parts[i] / 100);
+					}
+					delta_first = first_dfEnd - first_dfStart;
+					duration=duration / (Math.PI * 2) * delta_first;
+				} else { //переключение на другой элемент
+
+					var df = -(Math.PI * 2) * (25 / 100);
+
+					for (var i = 0; i < this.numberOfParts; i++) {
+						if (i == currentIndex) {
+							first_dfStart = df + this.skipRadians / 2;
+							first_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
+						}
+
+						if (i == nextIndex) {
+							finish_dfStart = df + this.skipRadians / 2;
+							finish_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
+						}
+
+						df += (Math.PI * 2) * (this.parts[i] / 100);
+					}
+					delta_first = first_dfEnd - first_dfStart;
+
+					delta_finish = finish_dfEnd - finish_dfStart;
+
+					//console.log('-------',delta_first,(finish_dfEnd - finish_dfStart), '-------');
+					duration=duration / (Math.PI * 2) * (delta_finish+delta_first)/2;
+				}
+
+
+
+				function render(time) {
+
+					if (time === undefined) {
+						time = new Date().getTime();
+					}
+					if (startTime === null) {
+						startTime = time;
+					}
+
+					interface.clear();
+
+
+					if (animType == 'first') { //отрисовка первого фрагмента
+
+						current_dfEnd = (((time - startTime) / duration * delta_first) + first_dfStart);
+						current_dfEnd = current_dfEnd<first_dfEnd?current_dfEnd:first_dfEnd;
+						interface.drawPart(first_dfStart, current_dfEnd, currentIndex, currentIndex);
+					} else { //переключение
+
+
+
+
+						current_dfStart = (((time - startTime) / duration * delta_first) + first_dfStart + interface.skipRadians);
+						current_dfEnd = (((time - startTime) / duration * delta_finish) + finish_dfStart + interface.skipRadians);
+
+						current_dfStart = current_dfStart<finish_dfStart?current_dfStart:finish_dfStart;
+						current_dfEnd = current_dfEnd<finish_dfEnd?current_dfEnd:finish_dfEnd;
+
+
+						//console.log(current_dfStart,current_dfEnd, nextIndex, nextIndex);
+						interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
+
+					}
+
+
+				}
+
+				(function animationLoop() {
+					if (animType == 'first') { //отрисовка первого фрагмента
+						render();
+						if (current_dfEnd < first_dfEnd) {
+							requestAnimationFrame(animationLoop); //можно передавать параметры
+						}
+					} else { //переключение
+						render();
+						if (current_dfStart < finish_dfStart) {
+							requestAnimationFrame(animationLoop); //можно передавать параметры
+						}
+					}
+
+				})();
 			}
 	}
+
+
+	///init
 	var data = {
 		numberOfParts: chartDataInPercent.length,
 		parts: {
-			"pt": chartDataInPercent
-		} //percentage of each parts
+			"pt": chartDataInPercent,
+			'grad': backgroundColorsForGrad
+		}
 	};
 
 	var drawDount = new drawdountChart(chartTopLevel);
 	var chartStrokeW = 33.7 * chartWrapW / 100 / 2; //66
 
-	console.log(chartStrokeW);
-	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW, "rgba(255,255,255,0)");
-	console.log(chartDataInPercent);
-	//drawDount.draw(data);
-	drawDount.drawIndexA(data, 0);
+	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
+	drawDount.setGradients(data);
 
+	$(document).resize(function () {
+		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
+		drawDount.setGradients(data);
+	});
+	//console.log(chartDataInPercent);
 
+	//drawDount.drawIndex(data, 0);
 
+	//drawDount.drawPart(0, Math.PI * 2, 1, 1);
+	setTimeout(() => {
+		drawDount.animate('first', 0);
+	}, 1000);
+	setTimeout(() => {
+		drawDount.animate('change', 0,1);
+	}, 3000);
 
 	///////////////CHART.JS
-/*
-	var myChart = new Chart(ctx, {
-		// The type of chart we want to create
-		type: 'doughnut',
 
-		// The data for our dataset
-		data: {
-			labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
-			datasets: [{
-				label: 'My First dataset',
-				backgroundColor: '#4F5566',
-				borderColor: '#3B4255',
-				hoverBorderColor :  '#3B4255',
-				borderWidth: chartItemSpace,
-				hoverBackgroundColor: '#5F6576',
-				data: chartDataInPercent,
-			}]
-		},
+		var myChart = new Chart(ctx, {
+			// The type of chart we want to create
+			type: 'doughnut',
 
-		// Configuration options go here
-		options: {
-			responsive: false,
-			cutoutPercentage: 63.7,
-			legend: {
-				display: false
+			// The data for our dataset
+			data: {
+				labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: '#4F5566',
+					borderColor: '#3B4255',
+					hoverBorderColor :  '#3B4255',
+					borderWidth: chartItemSpace,
+					hoverBackgroundColor: '#5F6576',
+					data: chartDataInPercent,
+				}]
 			},
-			tooltips: false,
-			events: ['mousemove', 'click'],
-			onHover: function (evt, activeElements) {
 
-			},
-			onClick: function (evt, elements) {
-				var datasetIndex;
-				var dataset;
+			// Configuration options go here
+			options: {
+				responsive: false,
+				cutoutPercentage: 63.7,
+				legend: {
+					display: false
+				},
+				tooltips: false,
+				events: ['mousemove', 'click'],
+				onHover: function (evt, activeElements) {
 
-				if (elements.length) {
-					console.log(elements[0]);
+				},
+				onClick: function (evt, elements) {
+					var datasetIndex;
+					var dataset;
 
-					//var index = elements[0]._index;
-					//datasetIndex = elements[0]._datasetIndex;
+					if (elements.length) {
+						console.log(elements[0]);
+
+						//var index = elements[0]._index;
+						//datasetIndex = elements[0]._datasetIndex;
 
 
+					}
+
+					myChart.update();
 				}
-
-				myChart.update();
 			}
-		}
-	});
-*/
+		});
+
 
 	///////////////events
 
