@@ -205,7 +205,9 @@ $(document).ready(function () {
 
 					finish_dfStart = undefined,
 					finish_dfEnd = undefined,
-					delta_finish = undefined;
+					delta_finish = undefined,
+
+					nextLower;
 
 
 
@@ -224,20 +226,25 @@ $(document).ready(function () {
 						df += (Math.PI * 2) * (this.parts[i] / 100);
 					}
 					delta_first = first_dfEnd - first_dfStart;
-					duration=duration / (Math.PI * 2) * delta_first;
+					duration = duration / (Math.PI * 2) * delta_first;
 				} else { //переключение на другой элемент
 
 					var df = -(Math.PI * 2) * (25 / 100);
 
+					nextLower = nextIndex < currentIndex;
 					for (var i = 0; i < this.numberOfParts; i++) {
+
+
+
+
 						if (i == currentIndex) {
 							first_dfStart = df + this.skipRadians / 2;
 							first_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
 						}
 
 						if (i == nextIndex) {
-							finish_dfStart = df + this.skipRadians / 2;
-							finish_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
+							finish_dfStart = df + this.skipRadians / 2 + (nextLower ? Math.PI * 2 : 0);
+							finish_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2 + (nextLower ? Math.PI * 2 : 0);
 						}
 
 						df += (Math.PI * 2) * (this.parts[i] / 100);
@@ -247,7 +254,7 @@ $(document).ready(function () {
 					delta_finish = finish_dfEnd - first_dfEnd;
 
 					//console.log('-------',delta_first,(finish_dfEnd - finish_dfStart), '-------');
-					duration=duration / (Math.PI * 2) * (delta_finish+delta_first)/2;
+					duration = duration / (Math.PI * 2) * (((delta_finish / (nextLower ? Math.PI * 4 : 1) + delta_first) / 2));
 				}
 
 
@@ -267,7 +274,7 @@ $(document).ready(function () {
 					if (animType == 'first') { //отрисовка первого фрагмента
 
 						current_dfEnd = (((time - startTime) / duration * delta_first) + first_dfStart);
-						current_dfEnd = current_dfEnd<first_dfEnd?current_dfEnd:first_dfEnd;
+						current_dfEnd = current_dfEnd < first_dfEnd ? current_dfEnd : first_dfEnd;
 						interface.drawPart(first_dfStart, current_dfEnd, currentIndex, currentIndex);
 					} else { //переключение
 
@@ -277,8 +284,8 @@ $(document).ready(function () {
 						current_dfStart = (((time - startTime) / duration * delta_first) + first_dfStart + interface.skipRadians);
 						current_dfEnd = (((time - startTime) / duration * delta_finish) + first_dfEnd + interface.skipRadians);
 
-						current_dfStart = current_dfStart<finish_dfStart?current_dfStart:finish_dfStart;
-						current_dfEnd = current_dfEnd<finish_dfEnd?current_dfEnd:finish_dfEnd;
+						current_dfStart = current_dfStart < finish_dfStart ? current_dfStart : finish_dfStart;
+						current_dfEnd = current_dfEnd < finish_dfEnd ? current_dfEnd : finish_dfEnd;
 
 
 						//console.log(current_dfStart,current_dfEnd, nextIndex, nextIndex);
@@ -334,61 +341,62 @@ $(document).ready(function () {
 	setTimeout(() => {
 		//drawDount.animate('first', 0);
 
-		drawDount.animate('change', 1,0);
+		drawDount.animate('change', 0, 1);
 	}, 1000);
-	/*setTimeout(() => {
-		drawDount.animate('change', 0,1);
-	}, 3000);*/
+	setTimeout(() => {
+		//		drawDount.animate('change', 0,1);
+		drawDount.animate('change', 1, 4);
+	}, 3000);
 
 	///////////////CHART.JS
 
-		var myChart = new Chart(ctx, {
-			// The type of chart we want to create
-			type: 'doughnut',
+	var myChart = new Chart(ctx, {
+		// The type of chart we want to create
+		type: 'doughnut',
 
-			// The data for our dataset
-			data: {
-				labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
-				datasets: [{
-					label: 'My First dataset',
-					backgroundColor: '#4F5566',
-					borderColor: '#3B4255',
-					hoverBorderColor :  '#3B4255',
-					borderWidth: chartItemSpace,
-					hoverBackgroundColor: '#5F6576',
-					data: chartDataInPercent,
-				}]
+		// The data for our dataset
+		data: {
+			labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
+			datasets: [{
+				label: 'My First dataset',
+				backgroundColor: '#4F5566',
+				borderColor: '#3B4255',
+				hoverBorderColor: '#3B4255',
+				borderWidth: chartItemSpace,
+				hoverBackgroundColor: '#5F6576',
+				data: chartDataInPercent,
+			}]
+		},
+
+		// Configuration options go here
+		options: {
+			responsive: false,
+			cutoutPercentage: 63.7,
+			legend: {
+				display: false
 			},
+			tooltips: false,
+			events: ['mousemove', 'click'],
+			onHover: function (evt, activeElements) {
 
-			// Configuration options go here
-			options: {
-				responsive: false,
-				cutoutPercentage: 63.7,
-				legend: {
-					display: false
-				},
-				tooltips: false,
-				events: ['mousemove', 'click'],
-				onHover: function (evt, activeElements) {
+			},
+			onClick: function (evt, elements) {
+				var datasetIndex;
+				var dataset;
 
-				},
-				onClick: function (evt, elements) {
-					var datasetIndex;
-					var dataset;
+				if (elements.length) {
+					console.log(elements[0]);
 
-					if (elements.length) {
-						console.log(elements[0]);
-
-						//var index = elements[0]._index;
-						//datasetIndex = elements[0]._datasetIndex;
+					//var index = elements[0]._index;
+					//datasetIndex = elements[0]._datasetIndex;
 
 
-					}
-
-					myChart.update();
 				}
+
+				myChart.update();
 			}
-		});
+		}
+	});
 
 
 	///////////////events
