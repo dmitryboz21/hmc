@@ -35,7 +35,7 @@ a {
 .dashboard-container {
 	margin: 0 auto;
 	width: 1300px;
-	max-width: calc(100% - 20px);
+	max-width: calc(100% - 40px);
 
 	&--chart {
 		width: 1478px;
@@ -110,6 +110,8 @@ a {
 
 	&__text {
 		padding: 30px 31px 0;
+		position: relative;
+		z-index: 3;
 	}
 
 	&__digits {
@@ -353,98 +355,100 @@ a {
 		opacity: 0.05;
 	}
 
+	@media screen and (min-width:1025px) {
 
-	&:nth-child(4n),
-	&:nth-child(4n-3) {
+		&:nth-child(4n),
+		&:nth-child(4n-3) {
 
-		.dshb-stat2-item {
-			&__art--1 {
-				bottom: 60%;
-				left: 26%;
-				width: 17px;
-				height: 17px;
+			.dshb-stat2-item {
+				&__art--1 {
+					bottom: 60%;
+					left: 26%;
+					width: 17px;
+					height: 17px;
 
-				background: url(../images/art-circle.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--2 {
-				bottom: 12%;
-				left: 49%;
-				width: 17px;
-				height: 17px;
+				&__art--2 {
+					bottom: 12%;
+					left: 49%;
+					width: 17px;
+					height: 17px;
 
-				background: url(../images/art-circle.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--3 {
-				bottom: 6%;
-				left: 14.5%;
-				width: 20px;
-				height: 20px;
+				&__art--3 {
+					bottom: 6%;
+					left: 14.5%;
+					width: 20px;
+					height: 20px;
 
-				background: url(../images/art-empty-circle.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-empty-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--4 {
-				bottom: 40%;
-				left: 41%;
-				width: 24px;
-				height: 24px;
+				&__art--4 {
+					bottom: 40%;
+					left: 41%;
+					width: 24px;
+					height: 24px;
 
-				background: url(../images/art-empty-circle.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-empty-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--5 {
-				bottom: 23%;
-				left: 30%;
-				width: 28px;
-				height: 28px;
+				&__art--5 {
+					bottom: 23%;
+					left: 30%;
+					width: 28px;
+					height: 28px;
 
-				background: url(../images/art-plus.svg) no-repeat center center;
-				background-size: contain;
+					background: url(../images/art-plus.svg) no-repeat center center;
+					background-size: contain;
+				}
 			}
 		}
-	}
 
-	&:nth-child(4n-1),
-	&:nth-child(4n-2) {
-		.dshb-stat2-item {
-			&__art--1 {
-				bottom: 62%;
-				left: 41%;
-				width: 17px;
-				height: 17px;
+		&:nth-child(4n-1),
+		&:nth-child(4n-2) {
+			.dshb-stat2-item {
+				&__art--1 {
+					bottom: 62%;
+					left: 41%;
+					width: 17px;
+					height: 17px;
 
-				background: url(../images/art-circle.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--2 {
-				bottom: 25%;
-				left: 39%;
-				width: 28px;
-				height: 28px;
+				&__art--2 {
+					bottom: 25%;
+					left: 39%;
+					width: 28px;
+					height: 28px;
 
-				background: url(../images/art-plus.svg) no-repeat center center;
-				background-size: contain;
-			}
+					background: url(../images/art-plus.svg) no-repeat center center;
+					background-size: contain;
+				}
 
-			&__art--3 {
-				bottom: 7.6%;
-				left: 30%;
-				width: 20px;
-				height: 20px;
+				&__art--3 {
+					bottom: 7.6%;
+					left: 30%;
+					width: 20px;
+					height: 20px;
 
-				background: url(../images/art-empty-circle.svg) no-repeat center center;
-				background-size: contain;
+					background: url(../images/art-empty-circle.svg) no-repeat center center;
+					background-size: contain;
+				}
+
 			}
 
 		}
-
 	}
 
 
@@ -611,7 +615,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	width: 157px;
-	max-width: 60%;
+    max-width: 45%;
 }
 
 .numpurchases-chi-item {
@@ -622,13 +626,14 @@ a {
 	width: 100%;
 
 
-	&::before{
+	&::before {
 		content: '';
 		display: block;
 		width: 100%;
 		padding-top: 100%;
 	}
-	img{
+
+	img {
 		position: absolute;
 		left: 0;
 		top: 0;
@@ -641,8 +646,9 @@ a {
 		transform: scale(0.6);
 		opacity: 0;
 	}
-	&--active{
-		img{
+
+	&--active {
+		img {
 
 			transform: scale(1);
 			opacity: 1;

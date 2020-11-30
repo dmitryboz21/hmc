@@ -121,7 +121,7 @@ $(document).ready(function () {
 	function arraySum(array) {
 		var sum = 0;
 		for (var i = 0; i < array.length; i++) {
-			sum += Math.max(array[i], 0.5);
+			sum += Math.max(array[i], 0.7);
 		}
 		return (sum);
 	}
@@ -142,7 +142,7 @@ $(document).ready(function () {
 
 
 	chartData.forEach(function (item, index, chartData) {
-		chartDataInPercent[index] = Math.max(item, 0.5) / chartDataPercent;
+		chartDataInPercent[index] = Math.max(item, 0.7) / chartDataPercent;
 	});
 
 
@@ -514,13 +514,13 @@ $(document).ready(function () {
 	};
 
 	var drawDount = new drawdountChart(chartTopLevel);
-	var chartStrokeW = 33.7 * chartWrapW / 100 / 2; //66
+	var chartStrokeW = (chartWrapW - 41) / 2 / 100 * 36; //66
 
 	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 	drawDount.setGradients(data);
 
 	$(document).resize(function () {
-		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
+		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 12 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 		drawDount.setGradients(data);
 	});
 
@@ -564,7 +564,7 @@ $(document).ready(function () {
 		// Configuration options go here
 		options: {
 			responsive: false,
-			cutoutPercentage: 63.7,
+			cutoutPercentage: 64,
 			legend: {
 				display: false
 			},

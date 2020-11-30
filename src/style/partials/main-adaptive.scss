@@ -1,0 +1,318 @@
+@media screen and (max-width: 1024px) {
+    .dashboard {
+        padding-top: 80px;
+    }
+
+    .dshb-stat1 {
+        margin-top: 70px;
+    }
+
+    .dshb-stat1-item {
+        &__inner {
+            padding-bottom: 112px;
+        }
+
+        &__text {
+            padding: 13px 18px 0;
+        }
+
+        &__digits {
+            font-size: 46px;
+            line-height: 1;
+        }
+
+        &__dimension {
+            font-size: 17px;
+            line-height: 150%;
+            letter-spacing: 0.015em;
+            margin-top: -1px;
+        }
+
+        &__more-digits {
+            font-size: 17px;
+            line-height: 150%;
+            margin-top: 7px;
+        }
+
+        &__pic {
+
+            margin: 15px -26px -8px auto;
+            height: 148px;
+        }
+
+        &__description {}
+
+        &__art--1 {
+            position: absolute;
+            bottom: 57%;
+            left: 86%;
+        }
+
+        &__art--2 {
+            bottom: 29%;
+            left: 5%;
+        }
+
+        &__art--3 {
+            bottom: 17%;
+            left: 39%;
+        }
+
+        &__art--4 {
+            bottom: 7%;
+            left: 15%;
+        }
+
+        &__art--5 {
+            bottom: 38%;
+            left: 31%;
+        }
+
+        &:hover .dshb-stat1-item__pic {
+            height: 119px;
+        }
+    }
+
+    .dshb-stat2 {
+        margin-top: 96px;
+    }
+
+    .dshb-stat2-item {
+        &__inner {
+            padding: 30px 39px 47px;
+        }
+
+
+        &__title {
+            font-size: 27px;
+            line-height: 37px;
+            letter-spacing: 0.015em;
+        }
+
+        &__digits {
+            font-size: 38px;
+            line-height: 52px;
+            letter-spacing: 0.015em;
+
+        }
+
+        &__type {
+            font-size: 17px;
+            line-height: 150%;
+            letter-spacing: 0.015em;
+        }
+
+        &__more-digits {
+            font-weight: 600;
+            font-size: 17px;
+            line-height: 150%;
+            letter-spacing: 0.015em;
+            margin-top: 8px;
+        }
+
+        &__flex {
+            margin-top: 21px;
+        }
+
+        &__flex-left,
+        &__flex-right {
+            width: calc(50% - 10px);
+        }
+
+
+        &__arts {}
+
+        &__art {
+            position: absolute;
+            opacity: 0.05;
+        }
+
+
+    }
+
+    .dshb-stat2-item {
+        &__art--1 {
+            bottom: 63%;
+            left: 32%;
+            width: 17px;
+            height: 17px;
+
+            background: url(../images/art-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--2 {
+            bottom: 33%;
+            left: auto;
+            right: 5%;
+            width: 17px;
+            height: 17px;
+
+            background: url(../images/art-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--3 {
+            left: 19.5%;
+            width: 20px;
+            height: 20px;
+
+            background: url(../images/art-empty-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--4 {
+            bottom: 43%;
+            left: 46%;
+            width: 24px;
+            height: 24px;
+
+            background: url(../images/art-empty-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--5 {
+            bottom: 20%;
+            left: 38%;
+            width: 28px;
+            height: 28px;
+
+            background: url(../images/art-plus.svg) no-repeat center center;
+            background-size: contain;
+        }
+    }
+
+    .numpurchases {
+        margin-top: 200px;
+    }
+
+    .numpurchases-block {
+        padding: 76px 35px 77px;
+        justify-content: space-between;
+    }
+
+    .numpurchases-info {
+        width: 358px;
+    }
+
+    .numpurchases-chart-wrap {
+        margin-left: 30px;
+        max-width: calc(100% - 358px - 30px);
+        width: 489px;
+    }
+
+    .numpurchases-chart-icons {
+        width: 120px;
+    }
+
+    .topsellers {
+        margin-top: 200px
+    }
+
+    .topsellers-block {
+        margin-top: 81px;
+    }
+
+
+
+    .topsellers-item {
+
+        margin: 0 10px 35px;
+
+        &__inner {
+            padding: 22px 19px 20px;
+        }
+
+        &__top {}
+
+        &__pic {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            object-position: center left;
+            display: block;
+        }
+
+        &__name {
+            font-size: 18px;
+            line-height: 150%;
+            margin-left: 14px;
+            width: 187px;
+            max-width: calc(100% - 65px - 20px);
+        }
+
+        &__list {
+            margin-top: 33px;
+        }
+
+
+        &__list-item {
+            &+.topsellers-item__list-item {
+                margin-top: 9px;
+            }
+        }
+
+        &__li-name {
+            font-size: 15px;
+            line-height: 135%;
+            font-weight: normal;
+            letter-spacing: 0.015em;
+        }
+
+        &__li-value {
+            font-weight: bold;
+            font-size: 15px;
+            line-height: 135%;
+            letter-spacing: 0.015em;
+        }
+
+        &_arts {}
+
+        &__art {
+            position: absolute;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        &__art--1 {
+            top: 23%;
+            left: 5%;
+            width: 17px;
+            height: 17px;
+
+            background: url(../images/art-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--2 {
+            bottom: 2%;
+            left: 44%;
+            width: 17px;
+            height: 17px;
+
+            background: url(../images/art-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--3 {
+            bottom: 44%;
+            left: 56.5%;
+            width: 24px;
+            height: 24px;
+
+            background: url(../images/art-empty-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+
+        &__art--4 {
+            bottom: 85%;
+            left: 88%;
+            width: 20px;
+            height: 20px;
+
+            background: url(../images/art-empty-circle.svg) no-repeat center center;
+            background-size: contain;
+        }
+    }
+}
