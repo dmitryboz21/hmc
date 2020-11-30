@@ -59,9 +59,26 @@ $(document).ready(function () {
 		}, 3000);
 	}
 
-	setTimeout(function () {
-		chartChangeTime();
-	}, 2000);
+
+	$flagRunAnim = false;
+	$(document).scroll(function () {
+		if (!$flagRunAnim) {
+
+			var scrollTop = $(document).scrollTop() + $(window).height();
+			var elem = $('#numpurchases-chart');
+			var elemTop = elem.offset().top;
+			var elemH = elem.height();
+			if (scrollTop > elemTop + elemH / 2) {
+				flagRunAnim=true;
+				setTimeout(function () {
+					clearInterval(chartChangeInterval);
+					chartChangeTime();
+				}, 500);
+
+			}
+		}
+	});
+
 
 	function roundEven(d) { //округление до четного
 		return Math.round(d / 2) * 2;
@@ -640,8 +657,8 @@ $(document).ready(function () {
 			$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
 
 			$(this).addClass('numpurchases-info-item--active')
-			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
-			.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+				.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+				.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
 			$(this).find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
 
 			var newIndex = parseInt($(this).attr('data-target'));

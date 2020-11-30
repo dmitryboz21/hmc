@@ -81,6 +81,9 @@ a {
 	width: calc(25% - 20px);
 	color: #FFFFFF;
 
+	display: flex;
+	flex-direction: column;
+
 	&::before {
 		content: '';
 		display: block;
@@ -96,6 +99,7 @@ a {
 	}
 
 	&__inner {
+		flex-grow: 1;
 		background: #3B4255;
 		border-radius: 10px;
 		position: relative;
@@ -266,6 +270,9 @@ a {
 	width: calc(50% - 20px);
 	color: #FFFFFF;
 
+	display: flex;
+	flex-direction: column;
+
 	&::before {
 		content: '';
 		display: block;
@@ -288,6 +295,7 @@ a {
 		overflow: hidden;
 		padding: 40px 40px 79px;
 		box-sizing: border-box;
+		flex-grow: 1;
 	}
 
 	&__title {
@@ -462,14 +470,14 @@ a {
 
 .numpurchases-block {
 	margin-top: 80px;
-	padding: 76px 89px 85px;
+	padding: 76px 89px 77px;
 	box-sizing: border-box;
 
 	background: #3B4255;
 	box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.38);
 	border-radius: 20px;
 	display: flex;
-	justify-content: space-between;
+	//justify-content: space-between;
 	align-items: center;
 }
 
@@ -506,7 +514,7 @@ a {
 	transition-duration: .3s;
 
 	&+.numpurchases-info-item {
-		margin-top: 7px;
+		padding-top: 7px;
 	}
 
 	&__name {
@@ -538,8 +546,9 @@ a {
 		left: 0;
 		height: 1px;
 		transition-duration: .5s;
-		&--anim{
-			animation: w100anim 3s linear forwards ;
+
+		&--anim {
+			animation: w100anim 3s linear forwards;
 
 		}
 	}
@@ -556,6 +565,7 @@ a {
 .numpurchases-chart-wrap {
 
 	width: 643px;
+	margin-left: 13.2%;
 
 	&::before {
 		content: '';
@@ -591,7 +601,54 @@ a {
 	opacity: .7;
 }
 
+.numpurchases-chart-icons {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 157px;
+	max-width: 60%;
+}
 
+.numpurchases-chi-item {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: 100%;
+
+
+	&::before{
+		content: '';
+		display: block;
+		width: 100%;
+		padding-top: 100%;
+	}
+	img{
+		position: absolute;
+		left: 0;
+		top: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: contain;
+		object-position: center center;
+		transition-duration: .5s;
+		transform: scale(0.6);
+		opacity: 0;
+	}
+	&--active{
+		img{
+
+			transform: scale(1);
+			opacity: 1;
+		}
+
+	}
+}
 
 
 .topsellers {
@@ -615,9 +672,12 @@ a {
 .topsellers-item {
 	position: relative;
 	z-index: 1;
-	margin: 0 10px 20px;
+	margin: 0 10px 40px;
 	width: calc(33.33% - 20px);
 	color: #FFFFFF;
+	display: flex;
+	flex-direction: column;
+
 
 	&::before {
 		content: '';
@@ -634,6 +694,7 @@ a {
 	}
 
 	&__inner {
+		flex-grow: 1;
 		background: #3B4255;
 		border-radius: 10px;
 		position: relative;
@@ -645,6 +706,8 @@ a {
 	&__top {
 		display: flex;
 		align-items: center;
+		position: relative;
+		z-index: 3;
 	}
 
 	&__pic {
@@ -668,6 +731,8 @@ a {
 	}
 
 	&__list {
+		position: relative;
+		z-index: 3;
 		margin-top: 25px;
 	}
 
@@ -689,6 +754,7 @@ a {
 		line-height: 135%;
 
 		letter-spacing: 0.015em;
+		word-break: break-word;
 	}
 
 	&__li-value {
@@ -698,5 +764,56 @@ a {
 
 		text-align: right;
 		letter-spacing: 0.015em;
+		margin-left: 10px;
 	}
+
+	&_arts {}
+
+	&__art {
+		position: absolute;
+		opacity: 0.05;
+		pointer-events: none;
+		z-index: 2;
+	}
+
+	&__art--1 {
+		top: 23%;
+		left: 5%;
+		width: 17px;
+		height: 17px;
+
+		background: url(../images/art-circle.svg) no-repeat center center;
+		background-size: contain;
+	}
+
+	&__art--2 {
+		bottom: 2%;
+		left: 44%;
+		width: 17px;
+		height: 17px;
+
+		background: url(../images/art-circle.svg) no-repeat center center;
+		background-size: contain;
+	}
+
+	&__art--3 {
+		bottom: 44%;
+		left: 56.5%;
+		width: 24px;
+		height: 24px;
+
+		background: url(../images/art-empty-circle.svg) no-repeat center center;
+		background-size: contain;
+	}
+
+	&__art--4 {
+		bottom: 85%;
+		left: 88%;
+		width: 20px;
+		height: 20px;
+
+		background: url(../images/art-empty-circle.svg) no-repeat center center;
+		background-size: contain;
+	}
+
 }
