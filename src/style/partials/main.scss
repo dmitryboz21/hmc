@@ -477,6 +477,16 @@ a {
 	width: 378px;
 }
 
+@keyframes w100anim {
+	0% {
+		width: 0;
+	}
+
+	100% {
+		width: 100%;
+	}
+}
+
 .numpurchases-info-item {
 	display: flex;
 	justify-content: space-between;
@@ -485,6 +495,7 @@ a {
 	color: #D0D0D0;
 	position: relative;
 	cursor: pointer;
+
 	/*&.numpurchases-info-item--active{
 		pointer-events: none;
 	}*/
@@ -527,6 +538,10 @@ a {
 		left: 0;
 		height: 1px;
 		transition-duration: .5s;
+		&--anim{
+			animation: w100anim 3s linear forwards ;
+
+		}
 	}
 }
 

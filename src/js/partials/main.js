@@ -1,7 +1,51 @@
 var resize_my_canvas;
 var currentIndexOfChart = -1;
+var numpurchasesInfoItems;
+
+
+var chartChangeInterval = 0;
+var stopPercentAnimFlag = false;
+
+
 $(document).ready(function () {
-	console.log(backgroundColorsForGrad);
+	numpurchasesInfoItems = $('.numpurchases-info-item').length;
+
+
+
+
+	function chartChangeTime() {
+		var elem;
+		if (currentIndexOfChart == -1) {
+			currentIndexOfChart = 0;
+			elem = $('.numpurchases-info-item[data-target="' + (currentIndexOfChart == -1 ? 0 : currentIndexOfChart) + '"] .numpurchases-info-item__progess');
+			//elem.parent().click();
+			elem.parent().addClass('numpurchases-info-item--active');
+			elem.addClass('numpurchases-info-item__progess--anim');
+
+			drawDount.animate('first', currentIndexOfChart);
+
+		}
+		chartChangeInterval = setInterval(function () {
+			newIndex = (currentIndexOfChart + 1) % numpurchasesInfoItems;
+			//console.log(newIndex);
+			elem = $('.numpurchases-info-item[data-target="' + newIndex + '"] .numpurchases-info-item__progess');
+			elem.parent().addClass('numpurchases-info-item--active')
+				.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+				.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+			elem.addClass('numpurchases-info-item__progess--anim');
+			//elem.parent().click();
+			//console.log('change', currentIndexOfChart, newIndex);
+			drawDount.animate('change', currentIndexOfChart, newIndex);
+			currentIndexOfChart = newIndex;
+
+
+
+		}, 3000);
+	}
+
+	setTimeout(function () {
+		chartChangeTime();
+	}, 2000);
 
 	function roundEven(d) { //округление до четного
 		return Math.round(d / 2) * 2;
@@ -304,29 +348,29 @@ $(document).ready(function () {
 						}*/
 
 
-					if (delta_first < 0.2 && delta_finish < 0.2 ) {
+					if (delta_first < 0.2 && delta_finish < 0.2) {
 
 						current_dfStart = finish_dfStart;
 						current_dfEnd = finish_dfEnd;
-						delta_first = 0;
-						delta_finish = 0;
-					}
-					else{
-						if (delta_first < 0.2){
-						delta_first = 0.2;
+						delta_first = 0.1;
+						delta_finish = 0.1;
+					} else {
+						if (delta_first < 0.2) {
+							delta_first = 0.2;
 
 						}
-						if(delta_finish < 0.2 ) {
+						if (delta_finish < 0.2) {
 							delta_finish = 0.2;
 
 						}
 					}
 
 
-					duration = duration / (Math.PI * 2) * (((delta_finish + delta_first)/2));
+					duration = duration / (Math.PI * 2) * (((delta_finish + delta_first) / 2));
 					duration = duration > maxDuration ? maxDuration : duration;
-				/*	console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
-					console.log('----', finish_dfStart, finish_dfEnd, delta_finish, duration, '----');*/
+					duration = duration < minDuration ? minDuration : duration;
+					console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
+					console.log('----', finish_dfStart, finish_dfEnd, delta_finish, duration, '----');
 				}
 
 
@@ -353,8 +397,8 @@ $(document).ready(function () {
 
 						if (reverse) {
 
-							current_dfStart =first_dfStart - (((time - startTime) / duration * delta_first)  + interface.skipRadians);
-							current_dfEnd = first_dfEnd - (((time - startTime) / duration * delta_finish)  + interface.skipRadians);
+							current_dfStart = first_dfStart - (((time - startTime) / duration * delta_first) + interface.skipRadians);
+							current_dfEnd = first_dfEnd - (((time - startTime) / duration * delta_finish) + interface.skipRadians);
 
 							current_dfStart = current_dfStart > finish_dfStart ? current_dfStart : finish_dfStart;
 							current_dfEnd = current_dfEnd > finish_dfEnd ? current_dfEnd : finish_dfEnd;
@@ -375,7 +419,7 @@ $(document).ready(function () {
 
 
 
-						//console.log(current_dfStart,current_dfEnd, nextIndex, nextIndex);
+						console.log(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
 						interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
@@ -395,7 +439,7 @@ $(document).ready(function () {
 						}
 					} else { //переключение
 						render();
-						if ( !reverse && (current_dfStart < finish_dfStart || current_dfEnd < finish_dfEnd) || reverse && (current_dfStart > finish_dfStart || current_dfEnd > finish_dfEnd)) {
+						if (!reverse && (current_dfStart < finish_dfStart || current_dfEnd < finish_dfEnd) || reverse && (current_dfStart > finish_dfStart || current_dfEnd > finish_dfEnd)) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
 						} else {
 							chart.css('pointer-events', 'all');
@@ -575,9 +619,14 @@ $(document).ready(function () {
 
 	$('.js-numpurchases-info-item').on('click', function () {
 		if (!$(this).hasClass('numpurchases-info-item--active')) {
-			$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
 
-			$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');
+			/*$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
+			$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
+
+			$(this).addClass('numpurchases-info-item--active')
+			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+			.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+			$(this).find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
 
 			var newIndex = parseInt($(this).attr('data-target'));
 			if (currentIndexOfChart === -1) {
@@ -588,15 +637,12 @@ $(document).ready(function () {
 				drawDount.animate('change', currentIndexOfChart, newIndex);
 				currentIndexOfChart = newIndex;
 			}
+
+			clearInterval(chartChangeInterval);
+			chartChangeTime();
+
 		}
 	});
-
-
-
-
-
-
-
 
 
 
