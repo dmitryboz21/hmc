@@ -26,7 +26,9 @@ var stopPercentAnimFlag = false;
 $(document).ready(function () {
 	numpurchasesInfoItems = $('.numpurchases-info-item').length;
 
-
+	function changeIcon() {
+		$('#numpurchases-chart-icons .numpurchases-chi-item').eq(currentIndexOfChart).addClass('numpurchases-chi-item--active').siblings().removeClass('numpurchases-chi-item--active');
+	}
 
 
 	function chartChangeTime() {
@@ -39,6 +41,7 @@ $(document).ready(function () {
 			elem.addClass('numpurchases-info-item__progess--anim');
 
 			drawDount.animate('first', currentIndexOfChart);
+			changeIcon();
 
 		}
 		chartChangeInterval = setInterval(function () {
@@ -53,6 +56,8 @@ $(document).ready(function () {
 			//console.log('change', currentIndexOfChart, newIndex);
 			drawDount.animate('change', currentIndexOfChart, newIndex);
 			currentIndexOfChart = newIndex;
+			changeIcon();
+
 
 
 
@@ -69,7 +74,7 @@ $(document).ready(function () {
 			var elemTop = elem.offset().top;
 			var elemH = elem.height();
 			if (scrollTop > elemTop + elemH / 2) {
-				flagRunAnim=true;
+				flagRunAnim = true;
 				setTimeout(function () {
 					clearInterval(chartChangeInterval);
 					chartChangeTime();
@@ -673,7 +678,7 @@ $(document).ready(function () {
 
 			clearInterval(chartChangeInterval);
 			chartChangeTime();
-
+			changeIcon();
 		}
 	});
 

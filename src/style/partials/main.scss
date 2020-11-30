@@ -563,7 +563,7 @@ a {
 }
 
 .numpurchases-chart-wrap {
-
+	pointer-events: none !important;
 	width: 643px;
 	margin-left: 13.2%;
 
@@ -577,6 +577,7 @@ a {
 }
 
 #numpurchases-chart {
+	pointer-events: none !important;
 	position: absolute;
 	left: 0;
 	top: 0;
