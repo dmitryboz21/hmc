@@ -32,7 +32,7 @@
                 <div class="dshb-stat1-item__text">
                   <div class="dshb-stat1-item__digits">2,5</div>
                   <div class="dshb-stat1-item__dimension">млн клиентов</div>
-                  <div class="dshb-stat1-item__more-digits">2 567 880</div>
+                  <div class="dshb-stat1-item__more-digits" id="client">2 567 880</div>
                   <div class="dshb-stat1-item__description">Количество клиентов со счетами в рублях</div>
                 </div><img class="dshb-stat1-item__pic" src="images/people.svg" alt="">
               </div>
@@ -49,7 +49,7 @@
                 <div class="dshb-stat1-item__text">
                   <div class="dshb-stat1-item__digits">791</div>
                   <div class="dshb-stat1-item__dimension">млн покупок</div>
-                  <div class="dshb-stat1-item__more-digits">791 568 980</div>
+                  <div class="dshb-stat1-item__more-digits" id="buy">791 568 980</div>
                   <div class="dshb-stat1-item__description">Количество клиентов со счетами в рублях</div>
                 </div><img class="dshb-stat1-item__pic" src="images/cart.svg" alt="">
               </div>
@@ -66,7 +66,7 @@
                 <div class="dshb-stat1-item__text">
                   <div class="dshb-stat1-item__digits">337</div>
                   <div class="dshb-stat1-item__dimension">млрд потрачено</div>
-                  <div class="dshb-stat1-item__more-digits">337 256 789 785</div>
+                  <div class="dshb-stat1-item__more-digits" id="spent">337 256 789 785</div>
                   <div class="dshb-stat1-item__description">Количество клиентов со счетами в рублях</div>
                 </div><img class="dshb-stat1-item__pic" src="images/purse.svg" alt="">
               </div>
@@ -83,7 +83,7 @@
                 <div class="dshb-stat1-item__text">
                   <div class="dshb-stat1-item__digits">1,3</div>
                   <div class="dshb-stat1-item__dimension">млрд кешбэка</div>
-                  <div class="dshb-stat1-item__more-digits">1 657 789 864</div>
+                  <div class="dshb-stat1-item__more-digits" id="cashback">1 657 789 864</div>
                   <div class="dshb-stat1-item__description">Количество клиентов со счетами в рублях</div>
                 </div><img class="dshb-stat1-item__pic" src="images/cashback.svg" alt="">
               </div>
@@ -104,12 +104,12 @@
                   <div class="dshb-stat2-item__flex-left">
                     <div class="dshb-stat2-item__digits">95 млн</div>
                     <div class="dshb-stat2-item__type">исходящих</div>
-                    <div class="dshb-stat2-item__more-digits">95 567 880</div>
+                    <div class="dshb-stat2-item__more-digits" id="outgoing_transaction">95 567 880</div>
                   </div>
                   <div class="dshb-stat2-item__flex-right">
                     <div class="dshb-stat2-item__digits">70 млн</div>
                     <div class="dshb-stat2-item__type">входящих</div>
-                    <div class="dshb-stat2-item__more-digits">70 567 880</div>
+                    <div class="dshb-stat2-item__more-digits" id="incomin_transaction">70 567 880</div>
                   </div>
                 </div>
               </div>
@@ -167,6 +167,8 @@
         //UPD: слишком мелкие значения вызывали баги. Теперь те, что меньше 0,5% равняются 0,5%; 'это позволило избежать бага, и лучше отображать маленькие элементы(Это как раз соответствует макету), так что не парься, и выводи просто проценты'
         const chartData = [41.27,11.73,7.28,6.57,6.06,5.23,5.10,4.20,3.99,3.98,1.33,1.30,0.59,0.56,0.35,0.23,0.17,0.05];
         
+        // [food, cafe, other, play, mobile, travel, beauty, taxi, communal, auto, dress, fix, cinema, appliances, animals, taxes, book, duty_free] - твои id. В массиве выше их надо вывести разделяя десятки точкой. ниже - запятой и добавляя в конец знак %.
+        
       </script>
       <section class="numpurchases">
         <div class="dashboard-container">
@@ -179,92 +181,92 @@
               <!--style="color:...;" - задаёшь цвет текста при ховере-->
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="0" style="color:#61DB45;">
                 <div class="numpurchases-info-item__name">Продукты и супермаркеты</div>
-                <div class="numpurchases-info-item__value">41 ,27%</div>
+                <div class="numpurchases-info-item__value" id="food">41 ,27%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #61DB45;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="1" style="color:#FF7F00;">
                 <div class="numpurchases-info-item__name">Кафе и рестораны</div>
-                <div class="numpurchases-info-item__value">11 ,73%</div>
+                <div class="numpurchases-info-item__value" id="cafe">11 ,73%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FF7F00;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="2" style="color:#2FC9C8;">
                 <div class="numpurchases-info-item__name">Прочее</div>
-                <div class="numpurchases-info-item__value">7 ,28%</div>
+                <div class="numpurchases-info-item__value" id="other">7 ,28%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #2FC9C8;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="3" style="color:#0B8E42;">
                 <div class="numpurchases-info-item__name">Развлечения и спорт</div>
-                <div class="numpurchases-info-item__value">6 ,57%</div>
+                <div class="numpurchases-info-item__value" id="play">6 ,57%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #0B8E42;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="4" style="color:#FFC219;">
                 <div class="numpurchases-info-item__name">Пополнение мобильного</div>
-                <div class="numpurchases-info-item__value">6 ,06%</div>
+                <div class="numpurchases-info-item__value" id="mobile">6 ,06%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FFC219;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="5" style="color:#61DB45;">
                 <div class="numpurchases-info-item__name">Продукты и супермаркеты</div>
-                <div class="numpurchases-info-item__value">41 ,27%</div>
+                <div class="numpurchases-info-item__value" id="travel">41 ,27%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #61DB45;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="6" style="color:#FF7F00;">
                 <div class="numpurchases-info-item__name">Кафе и рестораны</div>
-                <div class="numpurchases-info-item__value">11 ,73%</div>
+                <div class="numpurchases-info-item__value" id="beauty">11 ,73%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FF7F00;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="7" style="color:#2FC9C8;">
                 <div class="numpurchases-info-item__name">Прочее</div>
-                <div class="numpurchases-info-item__value">7 ,28%</div>
+                <div class="numpurchases-info-item__value" id="taxi">7 ,28%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #2FC9C8;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="8" style="color:#0B8E42;">
                 <div class="numpurchases-info-item__name">Развлечения и спорт</div>
-                <div class="numpurchases-info-item__value">6 ,57%</div>
+                <div class="numpurchases-info-item__value" id="communal">6 ,57%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #0B8E42;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="9" style="color:#FFC219;">
                 <div class="numpurchases-info-item__name">Пополнение мобильного</div>
-                <div class="numpurchases-info-item__value">6 ,06%</div>
+                <div class="numpurchases-info-item__value" id="auto">6 ,06%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FFC219;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="10" style="color:#61DB45;">
                 <div class="numpurchases-info-item__name">Продукты и супермаркеты</div>
-                <div class="numpurchases-info-item__value">41 ,27%</div>
+                <div class="numpurchases-info-item__value" id="dress">41 ,27%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #61DB45;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="11" style="color:#FF7F00;">
                 <div class="numpurchases-info-item__name">Кафе и рестораны</div>
-                <div class="numpurchases-info-item__value">11 ,73%</div>
+                <div class="numpurchases-info-item__value" id="fix">11 ,73%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FF7F00;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="12" style="color:#2FC9C8;">
                 <div class="numpurchases-info-item__name">Прочее</div>
-                <div class="numpurchases-info-item__value">7 ,28%</div>
+                <div class="numpurchases-info-item__value" id="cinema">7 ,28%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #2FC9C8;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="13" style="color:#0B8E42;">
                 <div class="numpurchases-info-item__name">Развлечения и спорт</div>
-                <div class="numpurchases-info-item__value">6 ,57%</div>
+                <div class="numpurchases-info-item__value" id="appliances">6 ,57%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #0B8E42;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="14" style="color:#FFC219;">
                 <div class="numpurchases-info-item__name">Пополнение мобильного</div>
-                <div class="numpurchases-info-item__value">6 ,06%</div>
+                <div class="numpurchases-info-item__value" id="animals">6 ,06%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FFC219;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="15" style="color:#61DB45;">
                 <div class="numpurchases-info-item__name">Продукты и супермаркеты</div>
-                <div class="numpurchases-info-item__value">41 ,27%</div>
+                <div class="numpurchases-info-item__value" id="taxes">41 ,27%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #61DB45;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="16" style="color:#FF7F00;">
                 <div class="numpurchases-info-item__name">Кафе и рестораны</div>
-                <div class="numpurchases-info-item__value">11 ,73%</div>
+                <div class="numpurchases-info-item__value" id="book">11 ,73%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #FF7F00;"></div>
               </div>
               <div class="numpurchases-info-item js-numpurchases-info-item" data-target="17" style="color:#2FC9C8;">
                 <div class="numpurchases-info-item__name">Прочее</div>
-                <div class="numpurchases-info-item__value">7 ,28%</div>
+                <div class="numpurchases-info-item__value" id="duty_free">7 ,28%</div>
                 <div class="numpurchases-info-item__progess" style="width: 0; background-color: #2FC9C8;"></div>
               </div>
             </div>

@@ -55,7 +55,7 @@ $(document).ready(function () {
 	function arraySum(array) {
 		var sum = 0;
 		for (var i = 0; i < array.length; i++) {
-			sum += Math.max(array[i],0.5);
+			sum += Math.max(array[i], 0.5);
 		}
 		return (sum);
 	}
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
 
 	chartData.forEach(function (item, index, chartData) {
-		chartDataInPercent[index] = Math.max(item,0.5) / chartDataPercent;
+		chartDataInPercent[index] = Math.max(item, 0.5) / chartDataPercent;
 	});
 
 
@@ -212,7 +212,8 @@ $(document).ready(function () {
 					finish_dfEnd = undefined,
 					delta_finish = undefined,
 
-					nextLower;
+					nextLower,
+					reverse;
 
 				chart.css('pointer-events', 'none');
 				numpurchasesInfo.css('pointer-events', 'none');
@@ -263,43 +264,84 @@ $(document).ready(function () {
 						}
 
 						if (i == nextIndex) {
-							finish_dfStart = df + this.skipRadians / 2 + (nextLower ? Math.PI * 2 : 0);
-							finish_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2 + (nextLower ? Math.PI * 2 : 0);
+							finish_dfStart = df + this.skipRadians / 2;
+							finish_dfEnd = df + (Math.PI * 2) * (this.parts[i] / 100) - this.skipRadians / 2;
 							/*if (finish_dfStart >= finish_dfEnd) {
 								finish_dfStart = finish_dfStart - this.skipRadians / 2 ;
 								finish_dfEnd = finish_dfEnd + this.skipRadians / 2 ;
 							}*/
 						}
-
 						df += (Math.PI * 2) * (this.parts[i] / 100);
 					}
 
+					var center1 = (first_dfStart + first_dfEnd) / 2;
+					var center2 = (finish_dfStart + finish_dfEnd) / 2;
+					if (nextLower) { //id нового элемента меньше чем id старого
+						if (center2 + Math.PI * 2 - center1 > center1 - center2) {
+							//console.log('reverse1');
+							reverse = true;
+						} else {
+							finish_dfStart += Math.PI * 2;
+							finish_dfEnd += Math.PI * 2;
+							//console.log('default1');
+							reverse = false;
+						}
 
-					delta_first = first_dfEnd - first_dfStart;
+					} else {
+						if (center1 + Math.PI * 2 - center2 < center2 - center1) {
+							first_dfStart += Math.PI * 2;
+							first_dfEnd += Math.PI * 2;
+							//console.log('reverse2');
+							reverse = true;
+						} else {
+							//console.log('default2');
+							reverse = false;
+						}
 
-					delta_finish = finish_dfEnd - first_dfEnd;
+					}
 
-				/*	if( delta_first < 0.2 || delta_finish < 0.2 || first_dfStart >= first_dfEnd || finish_dfStart >= finish_dfEnd){
-						first_dfStart = first_dfStart - this.skipRadians / 2 - this.skipRadians;
-						first_dfEnd = first_dfEnd + this.skipRadians / 2 - this.skipRadians;
-
-						finish_dfStart = finish_dfStart - this.skipRadians / 2 + this.skipRadians;
-						finish_dfEnd = finish_dfEnd + this.skipRadians / 2 + this.skipRadians;
+					if (reverse) {
+						delta_first = Math.abs(finish_dfStart - first_dfStart);
+						delta_finish = Math.abs(finish_dfEnd - first_dfEnd);
+					} else {
 						delta_first = first_dfEnd - first_dfStart;
 						delta_finish = finish_dfEnd - first_dfEnd;
+					}
 
-					}*/
-					if( delta_first < 0.2 || delta_finish < 0.2 ){
+					/*	if( delta_first < 0.2 || delta_finish < 0.2 || first_dfStart >= first_dfEnd || finish_dfStart >= finish_dfEnd){
+							first_dfStart = first_dfStart - this.skipRadians / 2 - this.skipRadians;
+							first_dfEnd = first_dfEnd + this.skipRadians / 2 - this.skipRadians;
+
+							finish_dfStart = finish_dfStart - this.skipRadians / 2 + this.skipRadians;
+							finish_dfEnd = finish_dfEnd + this.skipRadians / 2 + this.skipRadians;
+							delta_first = first_dfEnd - first_dfStart;
+							delta_finish = finish_dfEnd - first_dfEnd;
+
+						}*/
+
+
+					if (delta_first < 0.2 && delta_finish < 0.2 ) {
 
 						current_dfStart = finish_dfStart;
-						current_dfEnd =  finish_dfEnd;
+						current_dfEnd = finish_dfEnd;
 						delta_first = 0;
 						delta_finish = 0;
 					}
-					duration = duration / (Math.PI * 2) * (((delta_finish / (nextLower ? Math.PI * 4 : 1) + delta_first) / 2));
-					duration = duration > maxDuration ? maxDuration : duration;
+					else{
+						if (delta_first < 0.2){
+						delta_first = 0.2;
 
-					/*console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
+						}
+						if(delta_finish < 0.2 ) {
+							delta_finish = 0.2;
+
+						}
+					}
+
+
+					duration = duration / (Math.PI * 2) * (((delta_finish + delta_first)/2));
+					duration = duration > maxDuration ? maxDuration : duration;
+				/*	console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
 					console.log('----', finish_dfStart, finish_dfEnd, delta_finish, duration, '----');*/
 				}
 
@@ -325,16 +367,32 @@ $(document).ready(function () {
 					} else { //переключение
 
 
+						if (reverse) {
+
+							current_dfStart =first_dfStart - (((time - startTime) / duration * delta_first)  + interface.skipRadians);
+							current_dfEnd = first_dfEnd - (((time - startTime) / duration * delta_finish)  + interface.skipRadians);
+
+							current_dfStart = current_dfStart > finish_dfStart ? current_dfStart : finish_dfStart;
+							current_dfEnd = current_dfEnd > finish_dfEnd ? current_dfEnd : finish_dfEnd;
 
 
-						current_dfStart = (((time - startTime) / duration * delta_first) + first_dfStart + interface.skipRadians);
-						current_dfEnd = (((time - startTime) / duration * delta_finish) + first_dfEnd + interface.skipRadians);
+							//console.log(current_dfStart,current_dfEnd);
 
-						current_dfStart = current_dfStart < finish_dfStart ? current_dfStart : finish_dfStart;
-						current_dfEnd = current_dfEnd < finish_dfEnd ? current_dfEnd : finish_dfEnd;
+						} else {
+
+							current_dfStart = (((time - startTime) / duration * delta_first) + first_dfStart + interface.skipRadians);
+							current_dfEnd = (((time - startTime) / duration * delta_finish) + first_dfEnd + interface.skipRadians);
+
+							current_dfStart = current_dfStart < finish_dfStart ? current_dfStart : finish_dfStart;
+							current_dfEnd = current_dfEnd < finish_dfEnd ? current_dfEnd : finish_dfEnd;
+
+						}
+
+
 
 
 						//console.log(current_dfStart,current_dfEnd, nextIndex, nextIndex);
+
 						interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
 					}
@@ -353,7 +411,7 @@ $(document).ready(function () {
 						}
 					} else { //переключение
 						render();
-						if (current_dfStart < finish_dfStart || current_dfEnd < finish_dfEnd) {
+						if ( !reverse && (current_dfStart < finish_dfStart || current_dfEnd < finish_dfEnd) || reverse && (current_dfStart > finish_dfStart || current_dfEnd > finish_dfEnd)) {
 							requestAnimationFrame(animationLoop); //можно передавать параметры
 						} else {
 							chart.css('pointer-events', 'all');
@@ -361,8 +419,15 @@ $(document).ready(function () {
 
 							interface.clear();
 
-							current_dfStart = current_dfStart < finish_dfStart ? current_dfStart : finish_dfStart;
-							current_dfEnd = current_dfEnd < finish_dfEnd ? current_dfEnd : finish_dfEnd;
+							if (reverse) {
+								current_dfStart = current_dfStart > finish_dfStart ? current_dfStart : finish_dfStart;
+								current_dfEnd = current_dfEnd > finish_dfEnd ? current_dfEnd : finish_dfEnd;
+
+							} else {
+								current_dfStart = current_dfStart < finish_dfStart ? current_dfStart : finish_dfStart;
+								current_dfEnd = current_dfEnd < finish_dfEnd ? current_dfEnd : finish_dfEnd;
+
+							}
 							interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
 						}

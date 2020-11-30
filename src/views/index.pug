@@ -27,7 +27,7 @@ block main
 						.dshb-stat1-item__text
 							.dshb-stat1-item__digits 2,5
 							.dshb-stat1-item__dimension млн клиентов
-							.dshb-stat1-item__more-digits 2 567 880
+							#client.dshb-stat1-item__more-digits 2 567 880
 							.dshb-stat1-item__description Количество клиентов со счетами в рублях
 						img.dshb-stat1-item__pic(src="images/people.svg", alt="")
 				.dshb-stat1-item
@@ -41,7 +41,7 @@ block main
 						.dshb-stat1-item__text
 							.dshb-stat1-item__digits 791
 							.dshb-stat1-item__dimension млн покупок
-							.dshb-stat1-item__more-digits 791 568 980
+							#buy.dshb-stat1-item__more-digits 791 568 980
 							.dshb-stat1-item__description Количество клиентов со счетами в рублях
 						img.dshb-stat1-item__pic(src="images/cart.svg", alt="")
 				.dshb-stat1-item
@@ -55,7 +55,7 @@ block main
 						.dshb-stat1-item__text
 							.dshb-stat1-item__digits 337
 							.dshb-stat1-item__dimension млрд потрачено
-							.dshb-stat1-item__more-digits 337 256 789 785
+							#spent.dshb-stat1-item__more-digits 337 256 789 785
 							.dshb-stat1-item__description Количество клиентов со счетами в рублях
 						img.dshb-stat1-item__pic(src="images/purse.svg", alt="")
 				.dshb-stat1-item
@@ -69,7 +69,7 @@ block main
 						.dshb-stat1-item__text
 							.dshb-stat1-item__digits 1,3
 							.dshb-stat1-item__dimension млрд кешбэка
-							.dshb-stat1-item__more-digits 1 657 789 864
+							#cashback.dshb-stat1-item__more-digits 1 657 789 864
 							.dshb-stat1-item__description Количество клиентов со счетами в рублях
 						img.dshb-stat1-item__pic(src="images/cashback.svg", alt="")
 
@@ -89,11 +89,11 @@ block main
 							.dshb-stat2-item__flex-left
 								.dshb-stat2-item__digits 95 млн
 								.dshb-stat2-item__type исходящих
-								.dshb-stat2-item__more-digits 95 567 880
+								#outgoing_transaction.dshb-stat2-item__more-digits 95 567 880
 							.dshb-stat2-item__flex-right
 								.dshb-stat2-item__digits 70 млн
 								.dshb-stat2-item__type входящих
-								.dshb-stat2-item__more-digits 70 567 880
+								#incomin_transaction.dshb-stat2-item__more-digits 70 567 880
 				.dshb-stat2-item
 					.dshb-stat2-item__inner
 						.dshb-stat2-item__arts
@@ -139,6 +139,8 @@ block main
 		//UPD: слишком мелкие значения вызывали баги. Теперь те, что меньше 0,5% равняются 0,5%; 'это позволило избежать бага, и лучше отображать маленькие элементы(Это как раз соответствует макету), так что не парься, и выводи просто проценты'
 		const chartData = [41.27,11.73,7.28,6.57,6.06,5.23,5.10,4.20,3.99,3.98,1.33,1.30,0.59,0.56,0.35,0.23,0.17,0.05];
 
+		// [food, cafe, other, play, mobile, travel, beauty, taxi, communal, auto, dress, fix, cinema, appliances, animals, taxes, book, duty_free] - твои id. В массиве выше их надо вывести разделяя десятки точкой. ниже - запятой и добавляя в конец знак %.
+
 	section.numpurchases
 		.dashboard-container
 			h2.dashboard-h2 Количество покупок в категории
@@ -149,75 +151,75 @@ block main
 					//style="color:...;" - задаёшь цвет текста при ховере
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="0" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
-						.numpurchases-info-item__value 41 ,27%
+						#food.numpurchases-info-item__value 41 ,27%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" style="color:#FF7F00;")
 						.numpurchases-info-item__name Кафе и рестораны
-						.numpurchases-info-item__value 11 ,73%
+						#cafe.numpurchases-info-item__value 11 ,73%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" style="color:#2FC9C8;")
 						.numpurchases-info-item__name Прочее
-						.numpurchases-info-item__value 7 ,28%
+						#other.numpurchases-info-item__value 7 ,28%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" style="color:#0B8E42;")
 						.numpurchases-info-item__name Развлечения и спорт
-						.numpurchases-info-item__value 6 ,57%
+						#play.numpurchases-info-item__value 6 ,57%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="4" style="color:#FFC219;")
 						.numpurchases-info-item__name Пополнение мобильного
-						.numpurchases-info-item__value 6 ,06%
+						#mobile.numpurchases-info-item__value 6 ,06%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
-						.numpurchases-info-item__value 41 ,27%
+						#travel.numpurchases-info-item__value 41 ,27%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="6" style="color:#FF7F00;")
 						.numpurchases-info-item__name Кафе и рестораны
-						.numpurchases-info-item__value 11 ,73%
+						#beauty.numpurchases-info-item__value 11 ,73%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="7" style="color:#2FC9C8;")
 						.numpurchases-info-item__name Прочее
-						.numpurchases-info-item__value 7 ,28%
+						#taxi.numpurchases-info-item__value 7 ,28%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="8" style="color:#0B8E42;")
 						.numpurchases-info-item__name Развлечения и спорт
-						.numpurchases-info-item__value 6 ,57%
+						#communal.numpurchases-info-item__value 6 ,57%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="9" style="color:#FFC219;")
 						.numpurchases-info-item__name Пополнение мобильного
-						.numpurchases-info-item__value 6 ,06%
+						#auto.numpurchases-info-item__value 6 ,06%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="10" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
-						.numpurchases-info-item__value 41 ,27%
+						#dress.numpurchases-info-item__value 41 ,27%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="11" style="color:#FF7F00;")
 						.numpurchases-info-item__name Кафе и рестораны
-						.numpurchases-info-item__value 11 ,73%
+						#fix.numpurchases-info-item__value 11 ,73%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="12" style="color:#2FC9C8;")
 						.numpurchases-info-item__name Прочее
-						.numpurchases-info-item__value 7 ,28%
+						#cinema.numpurchases-info-item__value 7 ,28%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="13" style="color:#0B8E42;")
 						.numpurchases-info-item__name Развлечения и спорт
-						.numpurchases-info-item__value 6 ,57%
+						#appliances.numpurchases-info-item__value 6 ,57%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #0B8E42;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="14" style="color:#FFC219;")
 						.numpurchases-info-item__name Пополнение мобильного
-						.numpurchases-info-item__value 6 ,06%
+						#animals.numpurchases-info-item__value 6 ,06%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="15" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
-						.numpurchases-info-item__value 41 ,27%
+						#taxes.numpurchases-info-item__value 41 ,27%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #61DB45;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="16" style="color:#FF7F00;")
 						.numpurchases-info-item__name Кафе и рестораны
-						.numpurchases-info-item__value 11 ,73%
+						#book.numpurchases-info-item__value 11 ,73%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #FF7F00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="17" style="color:#2FC9C8;")
 						.numpurchases-info-item__name Прочее
-						.numpurchases-info-item__value 7 ,28%
+						#duty_free.numpurchases-info-item__value 7 ,28%
 						.numpurchases-info-item__progess(style="width: 0; background-color: #2FC9C8;")
 
 				#numpurchases-chart-wrap.numpurchases-chart-wrap
