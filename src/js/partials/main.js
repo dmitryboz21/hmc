@@ -93,7 +93,7 @@ $(document).ready(function () {
 
 	}
 	resize_my_canvas();
-	$('html,body').resize(function () {
+	$(window).resize(function () {
 		resize_my_canvas();
 	});
 
@@ -506,7 +506,7 @@ $(document).ready(function () {
 	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 	drawDount.setGradients(data);
 
-	$('html, body').resize(function () {
+	$(window).resize(function () {
 		canvasTopLevel = document.getElementById("numpurchases-chart-active-level");
 		chartTopLevel = canvasTopLevel.getContext("2d");
 		drawDount = new drawdountChart(chartTopLevel);
@@ -599,7 +599,6 @@ $(document).ready(function () {
 		}
 	});
 
-
 	///////////////events
 
 	function triggerChartHover(idx) {
@@ -613,22 +612,29 @@ $(document).ready(function () {
 			node = myChart.canvas;
 		node.dispatchEvent(evt);
 	}
-	$('.js-numpurchases-info-item').on('mouseenter', function () {
-		var newIndex = parseInt($(this).attr('data-target'));
 
-		function triggerChartHover(idx) {
-			var meta = myChart.getDatasetMeta(0),
-				rect = myChart.canvas.getBoundingClientRect(),
-				point = meta.data[idx].getCenterPoint(),
-				evt = new MouseEvent('mousemove', {
-					clientX: rect.left + point.x,
-					clientY: rect.top + point.y
-				}),
-				node = myChart.canvas;
-			node.dispatchEvent(evt);
+
+
+	$('.js-numpurchases-info-item').on('mouseenter', function () {
+		if (window.matchMedia('(max-width: 710px)').matches) {
+
+			var newIndex = parseInt($(this).attr('data-target'));
+
+			function triggerChartHover(idx) {
+				var meta = myChart.getDatasetMeta(0),
+					rect = myChart.canvas.getBoundingClientRect(),
+					point = meta.data[idx].getCenterPoint(),
+					evt = new MouseEvent('mousemove', {
+						clientX: rect.left + point.x,
+						clientY: rect.top + point.y
+					}),
+					node = myChart.canvas;
+				node.dispatchEvent(evt);
+			}
+			triggerChartHover(newIndex);
 		}
-		triggerChartHover(newIndex);
 	});
+
 	$('.js-numpurchases-info-item').on('mouseleave', function () {
 		var newIndex = parseInt($(this).attr('data-target'));
 
@@ -726,6 +732,8 @@ $(document).ready(function () {
 
 
 	$(window).resize(function () {
+
+		myChart.resize();
 		console.log($('body').width())
 		if (window.matchMedia('(max-width: 710px)').matches) {
 			if (!sliderActive) {
