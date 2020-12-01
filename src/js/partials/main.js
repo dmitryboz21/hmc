@@ -5,9 +5,12 @@ var sliderActive = false;
 var myChart;
 var chartChangeInterval = 0;
 var stopPercentAnimFlag = false;
+var $flagRunAnim;
+var width;
 
 
 $(document).ready(function () {
+	width = $(window).width();
 	numpurchasesInfoItems = $('.numpurchases-info-item').length;
 
 	function changeIcon() {
@@ -617,6 +620,12 @@ $(document).ready(function () {
 
 	$(window).resize(function () {
 
+		if ($(window).width()===width) {
+			return;
+		}
+		else{
+			width=$(window).width();
+		}
 		destroyMyChart();
 
 		chartWrapH = roundEven(chartWrap.height() + 6);
@@ -679,7 +688,7 @@ $(document).ready(function () {
 
 
 	$('.js-numpurchases-info-item').on('mouseenter', function () {
-		if (window.matchMedia('(max-width: 710px)').matches) {
+		if (window.matchMedia('(min-width: 711px)').matches) {
 
 			var newIndex = parseInt($(this).attr('data-target'));
 
