@@ -72,7 +72,7 @@ $(document).ready(function () {
 	$(document).scroll(function () {
 		if (!$flagRunAnim) {
 
-		initMyChart();
+			initMyChart();
 			var scrollTop = $(document).scrollTop() + $(window).height();
 			var elem = $('#numpurchases-chart');
 			var elemTop = elem.offset().top;
@@ -169,7 +169,7 @@ $(document).ready(function () {
 
 	///////////////CHART.JS
 
-	function initMyChart(){
+	function initMyChart() {
 		myChart = new Chart(ctx, {
 			// The type of chart we want to create
 			type: 'doughnut',
@@ -264,7 +264,8 @@ $(document).ready(function () {
 		});
 
 	}
-	function destroyMyChart(){
+
+	function destroyMyChart() {
 		myChart.destroy();
 	}
 
@@ -677,19 +678,19 @@ $(document).ready(function () {
 	}, 3000);
 */
 
-
-	function triggerChartHover(idx) {
-		var meta = myChart.getDatasetMeta(0),
-			rect = myChart.canvas.getBoundingClientRect(),
-			point = meta.data[idx].getCenterPoint(),
-			evt = new MouseEvent('mousemove', {
-				clientX: rect.left + point.x,
-				clientY: rect.top + point.y
-			}),
-			node = myChart.canvas;
-		node.dispatchEvent(evt);
-	}
-
+	/*
+		function triggerChartHover(idx) {
+			var meta = myChart.getDatasetMeta(0),
+				rect = myChart.canvas.getBoundingClientRect(),
+				point = meta.data[idx].getCenterPoint(),
+				evt = new MouseEvent('mousemove', {
+					clientX: rect.left + point.x,
+					clientY: rect.top + point.y
+				}),
+				node = myChart.canvas;
+			node.dispatchEvent(evt);
+		}
+	*/
 
 
 	$('.js-numpurchases-info-item').on('mouseenter', function () {
@@ -708,7 +709,9 @@ $(document).ready(function () {
 					node = myChart.canvas;
 				node.dispatchEvent(evt);
 			}
-			triggerChartHover(newIndex);
+			if ($flagRunAnim) {
+				triggerChartHover(newIndex);
+			}
 		}
 	});
 
@@ -726,7 +729,9 @@ $(document).ready(function () {
 				node = myChart.canvas;
 			node.dispatchEvent(evt);
 		}
-		triggerChartHover(newIndex);
+		if ($flagRunAnim) {
+			triggerChartHover(newIndex);
+		}
 	});
 
 

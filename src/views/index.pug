@@ -116,24 +116,27 @@ block main
 	script.
 		//массив с начальным и конечным цветом градиентов(начальный цвет - цвет тени с блюром). лучше задавать в rgb или hex
 		const backgroundColorsForGrad = [
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['OrangeRed', 'red'],
-			['CadetBlue', 'blue'],
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['OrangeRed', 'red'],
-			['CadetBlue', 'blue'],
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['OrangeRed', 'red'],
-			['CadetBlue', 'blue'],
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['OrangeRed', 'red'],
-			['CadetBlue', 'blue'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['rgb(180,246,165)', 'rgb(98,219,70)']
+
+
+			['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
+			['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+			['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+			['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+			['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
+			['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+			['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+			['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+			['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+			['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+			['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+			['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+			['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+			['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+			['rgb(185,43,255)', 'rgb(192,49,255)']//розов
+
 		];
 		//Если что, эти значения относительны, и приводятся к проценту от их суммы, так что их сумма не должна быь равна 100. Эта фишка на случай если самые мелкие окажутся слишком тонкими, тогда ты на бекенде сможешь выводитьих сюда например через функцию max(реальное_значение, какая_то_минималка), чтобы слишком мелкие были больше и одного размера
 		//UPD: слишком мелкие значения вызывали баги. Теперь те, что меньше 0,5% равняются 0,5%; 'это позволило избежать бага, и лучше отображать маленькие элементы(Это как раз соответствует макету), так что не парься, и выводи просто проценты'
@@ -152,11 +155,11 @@ block main
 					.numpurchases-info-item.numpurchases-info-item--active.js-numpurchases-info-item(data-target="0" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						#food.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" style="color:#FF7F00;")
+						.numpurchases-info-item__progess(style="background-color: #61DB45;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" style="color:#FF6B00;")
 						.numpurchases-info-item__name Кафе и рестораны
 						#cafe.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #FF7F00;")
+						.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" style="color:#2FC9C8;")
 						.numpurchases-info-item__name Прочее
 						#other.numpurchases-info-item__value 7,28%
@@ -170,57 +173,57 @@ block main
 						#mobile.numpurchases-info-item__value 6,06%
 						.numpurchases-info-item__progess(style=" background-color: #FFC219;")
 					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" style="color:#61DB45;")
-						.numpurchases-info-item__name Продукты и супермаркеты
+						.numpurchases-info-item__name Путешествия
 						#travel.numpurchases-info-item__value 41,27%
 						.numpurchases-info-item__progess(style=" background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="6" style="color:#FF7F00;")
-						.numpurchases-info-item__name Кафе и рестораны
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="6" style="color:#DB0626;")
+						.numpurchases-info-item__name Красота и медицина
 						#beauty.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #FF7F00;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="7" style="color:#2FC9C8;")
-						.numpurchases-info-item__name Прочее
+						.numpurchases-info-item__progess(style=" background-color: #DB0626;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="7" style="color:#A15CE6;")
+						.numpurchases-info-item__name Такси
 						#taxi.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="8" style="color:#0B8E42;")
-						.numpurchases-info-item__name Развлечения и спорт
+						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="8" style="color:#004FFF;")
+						.numpurchases-info-item__name Коммуналка и интернет
 						#communal.numpurchases-info-item__value 6,57%
-						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="9" style="color:#FFC219;")
-						.numpurchases-info-item__name Пополнение мобильного
+						.numpurchases-info-item__progess(style=" background-color: #004FFF;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="9" style="color:#0B8E42;")
+						.numpurchases-info-item__name Авто
 						#auto.numpurchases-info-item__value 6,06%
-						.numpurchases-info-item__progess(style=" background-color: #FFC219;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="10" style="color:#61DB45;")
-						.numpurchases-info-item__name Продукты и супермаркеты
-						#dress.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="11" style="color:#FF7F00;")
-						.numpurchases-info-item__name Кафе и рестораны
-						#fix.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #FF7F00;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="12" style="color:#2FC9C8;")
-						.numpurchases-info-item__name Прочее
-						#cinema.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="13" style="color:#0B8E42;")
-						.numpurchases-info-item__name Развлечения и спорт
-						#appliances.numpurchases-info-item__value 6,57%
 						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="14" style="color:#FFC219;")
-						.numpurchases-info-item__name Пополнение мобильного
-						#animals.numpurchases-info-item__value 6,06%
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="10" style="color:#FFC219;")
+						.numpurchases-info-item__name Одежда и обувь
+						#dress.numpurchases-info-item__value 41,27%
 						.numpurchases-info-item__progess(style=" background-color: #FFC219;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="15" style="color:#61DB45;")
-						.numpurchases-info-item__name Продукты и супермаркеты
-						#taxes.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="16" style="color:#FF7F00;")
-						.numpurchases-info-item__name Кафе и рестораны
-						#book.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #FF7F00;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="17" style="color:#2FC9C8;")
-						.numpurchases-info-item__name Прочее
-						#duty_free.numpurchases-info-item__value 7,28%
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="11" style="color:#2FC9C8;")
+						.numpurchases-info-item__name Ремонт
+						#fix.numpurchases-info-item__value 11,73%
 						.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="12" style="color:#A15CE6;")
+						.numpurchases-info-item__name Кино
+						#cinema.numpurchases-info-item__value 7,28%
+						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="13" style="color:#FF6B00;")
+						.numpurchases-info-item__name Бытовая техника
+						#appliances.numpurchases-info-item__value 6,57%
+						.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="14" style="color:#0B8E42;")
+						.numpurchases-info-item__name Животные
+						#animals.numpurchases-info-item__value 6,06%
+						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="15" style="color:#004FFF;")
+						.numpurchases-info-item__name Бюджет и налоги
+						#taxes.numpurchases-info-item__value 41,27%
+						.numpurchases-info-item__progess(style=" background-color: #004FFF;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="16" style="color:#DB0626;")
+						.numpurchases-info-item__name Книги
+						#book.numpurchases-info-item__value 11,73%
+						.numpurchases-info-item__progess(style=" background-color: #DB0626;")
+					.numpurchases-info-item.js-numpurchases-info-item(data-target="17" style="color:#A15CE6;")
+						.numpurchases-info-item__name Duty Free
+						#duty_free.numpurchases-info-item__value 7,28%
+						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
 
 				#numpurchases-chart-wrap.numpurchases-chart-wrap
 					canvas#numpurchases-chart
@@ -228,7 +231,7 @@ block main
 
 					#numpurchases-chart-icons.numpurchases-chart-icons
 						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/basket-green.svg", alt="")
+							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon.svg", alt="")
 						.numpurchases-chi-item
 							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-1.svg", alt="")
 						.numpurchases-chi-item
@@ -331,7 +334,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-2.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Прочее
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -360,7 +363,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-3.svg", alt="")
-							.topsellers-item__name Кафе <br> и рестораны
+							.topsellers-item__name  Развлечения и спорт
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -386,7 +389,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-4.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Пополнение мобильного
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -415,7 +418,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-5.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name Путешествия
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -441,7 +444,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-6.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Красота и медицина
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -470,7 +473,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-7.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Такси
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -496,7 +499,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-8.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Коммуналка<br> и интернет
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -525,7 +528,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-9.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Авто
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -551,7 +554,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-10.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Одежда<br> и обувь
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -580,7 +583,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-11.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Ремонт
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -606,7 +609,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-12.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Кино
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -635,7 +638,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-13.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Бытовая техника
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -661,7 +664,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-14.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Животные
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -690,7 +693,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-15.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Бюджет<br> и налоги
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
@@ -716,7 +719,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-16.svg", alt="")
-							.topsellers-item__name Прочее
+							.topsellers-item__name  Книги
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name Нова пошта
@@ -745,7 +748,7 @@ block main
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
 							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-17.svg", alt="")
-							.topsellers-item__name Кафе и рестораны
+							.topsellers-item__name  Duty Free
 						.topsellers-item__list
 							.topsellers-item__list-item
 								.topsellers-item__li-name McDonalds
