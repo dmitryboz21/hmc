@@ -316,3 +316,332 @@
         }
     }
 }
+
+
+@media screen and (max-width: 947px) {
+    .dshb-stat2-item__inner {
+        padding: 30px 20px 47px 39px;
+    }
+
+    .dshb-stat2-item__flex-left,
+    .dshb-stat2-item__flex-right {
+        width: calc(50% - 5px);
+    }
+}
+
+@media screen and (max-width: 890px) {
+    .dshb-stat2-item__digits {
+        font-size: 33px;
+        line-height: 1.3;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .dashboard {
+        padding-top: 89px;
+    }
+
+    .dashboard-h1 {
+        font-size: 42px;
+        line-height: 1.3;
+
+    }
+
+    .dashboard-info {
+
+        margin-top: 35px;
+        font-size: 16px;
+        line-height: 150%;
+        width: 390px;
+    }
+
+    .dshb-stat1 {
+        margin-top: 94px;
+    }
+
+    .dshb-stat1-item {
+        &__inner {
+            padding-bottom: 88px;
+        }
+
+        &__text {
+            padding: 13px 10px 0;
+        }
+
+        &__digits {
+            font-size: 40px;
+            line-height: 1;
+        }
+
+        &__dimension {
+            margin-top: 9px;
+            font-size: 15px;
+            line-height: 150%;
+        }
+
+        &__more-digits {
+            font-size: 15px;
+            line-height: 150%;
+            margin-top: 5px;
+        }
+
+        &__pic {
+            margin: 15px -11px -7px auto;
+            height: 90px;
+        }
+
+        &__description {
+            display: none !important;
+        }
+
+        &__art--1 {
+            bottom: 14%;
+            left: 53%;
+        }
+
+        &__art--2 {
+            bottom: 32%;
+            left: 7%;
+        }
+
+        &__art--3 {
+            display: none;
+        }
+
+        &__art--4 {
+            bottom: 70%;
+            left: 75%;
+        }
+
+        &__art--5 {
+            bottom: 20%;
+            left: 23%;
+            width: 17px;
+            height: 17px;
+        }
+
+        &:hover .dshb-stat1-item__pic {
+            height: 80px;
+        }
+    }
+
+
+    .dshb-stat2 {
+        margin-top: 80px;
+    }
+
+    .dshb-stat2-item {
+        &__inner {
+            padding: 20px 14px 33px 20px;
+        }
+
+
+        &__title {
+            font-size: 20px;
+            line-height: 27px;
+        }
+
+        &__digits {
+            font-size: 34px;
+            line-height: 46px;
+            margin-top: 5px;
+
+        }
+
+        &__type {
+            font-size: 15px;
+            line-height: 150%;
+            margin-top: 5px;
+        }
+
+        &__more-digits {
+            font-size: 15px;
+            line-height: 150%;
+            margin-top: 9px;
+        }
+
+        &__flex {
+            margin-top: 0px;
+        }
+
+        &__flex-left,
+        &__flex-right {
+            width: calc(50% - 7px);
+        }
+
+
+        &__arts {}
+
+        &__art {
+            position: absolute;
+            opacity: 0.05;
+        }
+
+
+
+
+        &__art--1 {
+            bottom: 52%;
+            left: 43%;
+        }
+
+        &__art--2 {
+            display: none;
+        }
+
+        &__art--3 {
+            bottom: 6px;
+            right: 8px;
+            left: auto;
+        }
+
+        &__art--4 {
+            bottom: auto;
+            top: 40px;
+            left: auto;
+            right: 14px;
+        }
+
+        &__art--5 {
+            bottom: 14%;
+            left: 37%;
+        }
+    }
+
+
+
+    .dashboard-h2 {
+
+        font-size: 30px;
+        line-height: 41px;
+    }
+
+    .numpurchases {
+        margin-top: 120px;
+    }
+
+    .numpurchases-block {
+        padding: 59px 26px 59px;
+        margin-top: 104px;
+        justify-content: space-between;
+    }
+
+    .numpurchases-info {}
+
+    .numpurchases-info {
+        width: 310px;
+        margin-top: 2px;
+
+        &-item {
+            padding-bottom: 7px;
+
+            &__name {
+
+                font-size: 16px;
+            }
+
+            &__value {
+
+                font-size: 16px;
+            }
+        }
+    }
+
+    .numpurchases-chart-wrap {
+        margin-left: 25px;
+        max-width: calc(100% - 318px - 25px);
+        width: 345px;
+    }
+
+    .numpurchases-chart-icons {
+        width: 120px;
+    }
+
+    .topsellers {
+        margin-top: 120px;
+    }
+
+    .topsellers-block {
+        margin-top: 84px;
+    }
+
+
+
+    .topsellers-item {
+        margin: 0 10px 30px;
+
+        &__inner {
+            padding: 17px 15px 14px;
+        }
+
+        &__top {}
+
+        &__pic {
+            width: 45px;
+            height: 45px;
+        }
+
+        &__name {
+            font-size: 16px;
+            line-height: 150%;
+            margin-left: 14px;
+            width: 187px;
+            max-width: calc(100% - 65px - 20px);
+        }
+
+        &__list {
+            margin-top: 16px;
+        }
+
+
+        &__list-item {
+            &+.topsellers-item__list-item {
+                margin-top: 11px;
+            }
+        }
+
+        &__li-name {
+            font-size: 14px;
+            line-height: 135%;
+        }
+
+        &__li-value {
+            font-size: 14px;
+            line-height: 135%;
+            white-space: nowrap;
+        }
+
+        &_arts {}
+
+        &__art {
+            position: absolute;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        &__art--1 {
+            top: 42%;
+            left: 23%;
+        }
+
+        &__art--2 {
+            display: none;
+        }
+
+        &__art--3 {
+            bottom: 35%;
+            left: 59.5%;
+        }
+
+        &__art--4 {
+            display: none;
+        }
+    }
+}
+
+
+@media screen and (max-width: 710px) {
+
+
+}

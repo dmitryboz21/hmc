@@ -105,8 +105,8 @@ $(document).ready(function () {
 		topLayer.attr('width', chartWrapW);
 
 	}
-	resize_my_canvas();;
-	$(document).resize(function () {
+	resize_my_canvas();
+	$('html,body').resize(function () {
 		resize_my_canvas();
 	});
 
@@ -407,8 +407,8 @@ $(document).ready(function () {
 					duration = duration / (Math.PI * 2) * (((delta_finish + delta_first) / 2));
 					duration = duration > maxDuration ? maxDuration : duration;
 					duration = duration < minDuration ? minDuration : duration;
-					console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
-					console.log('----', finish_dfStart, finish_dfEnd, delta_finish, duration, '----');
+					/*console.log('----', first_dfStart, first_dfEnd, delta_first, duration, '----');
+					console.log('----', finish_dfStart, finish_dfEnd, delta_finish, duration, '----');*/
 				}
 
 
@@ -457,7 +457,7 @@ $(document).ready(function () {
 
 
 
-						console.log(current_dfStart, current_dfEnd, nextIndex, nextIndex);
+					/*	console.log(current_dfStart, current_dfEnd, nextIndex, nextIndex);*/
 
 						interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
@@ -519,9 +519,14 @@ $(document).ready(function () {
 	drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 	drawDount.setGradients(data);
 
-	$(document).resize(function () {
-		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 12 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
+	$('html, body').resize(function () {
+		canvasTopLevel = document.getElementById("numpurchases-chart-active-level");
+		chartTopLevel = canvasTopLevel.getContext("2d");
+		drawDount = new drawdountChart(chartTopLevel);
+		chartStrokeW = (chartWrapW - 41) / 2 / 100 * 36; //66
+		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
 		drawDount.setGradients(data);
+		drawDount.animate('first', currentIndexOfChart);
 	});
 
 
