@@ -360,6 +360,7 @@
 	}
 
 	.dshb-stat1-item {
+		pointer-events: none;
 		&__inner {
 			padding-bottom: 88px;
 		}

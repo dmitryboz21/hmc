@@ -741,15 +741,18 @@ $(document).ready(function () {
 	}
 
 
-	$('html,body').resize(function () {
-
+	$(window).resize(function () {
+		console.log($('body').width())
 		if (window.matchMedia('(max-width: 710px)').matches) {
 			if (!sliderActive) {
 				initNumpurSlider();
 
 			}
 		} else {
-			killNumpurSlider();
+			if (sliderActive) {
+				killNumpurSlider();
+
+			}
 		}
 	});
 });
