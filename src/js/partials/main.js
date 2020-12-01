@@ -56,6 +56,7 @@ $(document).ready(function () {
 	$(document).scroll(function () {
 		if (!$flagRunAnim) {
 
+		initMyChart();
 			var scrollTop = $(document).scrollTop() + $(window).height();
 			var elem = $('#numpurchases-chart');
 			var elemTop = elem.offset().top;
@@ -252,7 +253,6 @@ $(document).ready(function () {
 	}
 
 	///////////////events
-	initMyChart();
 
 
 
