@@ -2,7 +2,7 @@ var resize_my_canvas;
 var currentIndexOfChart = -1;
 var numpurchasesInfoItems;
 var sliderActive = false;
-
+var myChart;
 var chartChangeInterval = 0;
 var stopPercentAnimFlag = false;
 
@@ -93,10 +93,6 @@ $(document).ready(function () {
 
 	}
 	resize_my_canvas();
-	$(window).resize(function () {
-		resize_my_canvas();
-	});
-
 	var chartItemSpace = 3;
 
 
@@ -235,6 +231,9 @@ $(document).ready(function () {
 				canvas.strokeStyle = this.gradients[gradIndex];
 				canvas.stroke();
 				canvas.closePath();
+
+
+				//console.log(this.x, this.y, this.radius, this.lineWidth);
 			},
 
 
@@ -507,13 +506,31 @@ $(document).ready(function () {
 	drawDount.setGradients(data);
 
 	$(window).resize(function () {
+
+		chartWrapH = roundEven(chartWrap.height() + 6);
+		chartWrapW = roundEven(chartWrap.width() + 6);
+		chart.attr('height', chartWrapH);
+		chart.attr('width', chartWrapW);
+		topLayer.attr('height', chartWrapH);
+		topLayer.attr('width', chartWrapW);
+
+
 		canvasTopLevel = document.getElementById("numpurchases-chart-active-level");
 		chartTopLevel = canvasTopLevel.getContext("2d");
+
 		drawDount = new drawdountChart(chartTopLevel);
 		chartStrokeW = (chartWrapW - 41) / 2 / 100 * 36; //66
+
+		/*console.log(canvasTopLevel.width,canvasTopLevel.height);
+		console.log(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);*/
 		drawDount.set(chartWrapW / 2, chartWrapW / 2, chartWrapW / 2 - 15 - chartStrokeW / 2, 0, Math.PI * 2, chartStrokeW);
+
 		drawDount.setGradients(data);
 		drawDount.animate('first', currentIndexOfChart);
+
+
+
+		myChart.resize();
 	});
 
 
@@ -535,7 +552,7 @@ $(document).ready(function () {
 */
 	///////////////CHART.JS
 
-	var myChart = new Chart(ctx, {
+	myChart = new Chart(ctx, {
 		// The type of chart we want to create
 		type: 'doughnut',
 
@@ -733,8 +750,7 @@ $(document).ready(function () {
 
 	$(window).resize(function () {
 
-		myChart.resize();
-		console.log($('body').width())
+		//console.log($('body').width())
 		if (window.matchMedia('(max-width: 710px)').matches) {
 			if (!sliderActive) {
 				initNumpurSlider();
