@@ -887,61 +887,153 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.dshb-stat2-item {
-	&__inner {}
-
-	&__arts {}
-
-	&__art {
-		&--1 {}
-
-		&--2 {}
-
-
-		&--3 {}
-
-
-		&--4 {}
-
-
-		&--5 {}
+@media screen and (max-width: 475px) {
+	.dashboard {
+		padding-top: 50px;
 	}
 
-	&__title {}
+	.dshb-stat1 {
+		margin-top: 56px;
+	}
 
-	&__flex {}
+	.dshb-stat1-item {
+		margin: 0 10px 40px;
 
-	&__flex-left {}
+		&__inner {
+			padding-bottom: 88px;
+		}
 
-	&__flex-right {}
+		&__arts {}
 
-	&__digits {}
+		&__art {
+			&--1 {}
 
-	&__type {}
+			&--2 {}
 
-	&__more-digits {}
+			&--3 {}
+
+			&--4 {}
+
+			&--5 {}
+		}
+
+		&__text {
+			padding: 13px 10px 0;
+		}
+
+		&__digits {
+			font-size: 40px;
+		}
+
+		&__dimension {
+			font-size: 14px;
+			line-height: 130%;
+			margin-top: 11px;
+		}
+
+		&__more-digits {
+			font-size: 14px;
+			line-height: 150%;
+			margin-top: 8px;
+		}
+
+		&__pic {
+			height: 89px;
+			margin: 15px -8px -7px auto;
+		}
+	}
+
+	.dshb-stat2 {
+		margin-top: 82px;
+	}
+
+	.dshb-stat2-item {
+		margin: 0 10px 50px;
+
+		&__inner {
+			padding: 16px 15px 27px 18px;
+		}
+
+		&__arts {}
+
+		&__art {
+			&--1 {}
+
+			&--2 {}
+
+
+			&--3 {}
+
+
+			&--4 {}
+
+
+			&--5 {}
+		}
+
+		&__title {
+			font-size: 18px;
+			line-height: 25px;
+		}
+
+		&__flex {
+			margin-top: 6px;
+		}
+
+		&__flex-left {}
+
+		&__flex-right {}
+
+		&__digits {
+			font-size: 30px;
+			line-height: 1.3;
+			margin-top: 5px;
+		}
+
+		&__type {
+			font-size: 14px;
+			line-height: 150%;
+		}
+
+		&__more-digits {
+			font-size: 14px;
+			line-height: 150%;
+			margin-top: 5px;
+		}
+	}
+
+	.dashboard-h2 {
+		font-size: 24px;
+		line-height: 33px;
+	}
+
+	.numpurchases {
+		margin-top: 70px;
+	}
+
+	.numpurchases-block {
+		margin-top: 50px;
+		padding: 65px 20px 61px;
+	}
+
+	.numpurchases-info-item {
+		&__name {
+			font-size: 15px;
+			line-height: 1.3;
+		}
+
+		&__value {
+			margin-top: 22px;
+			font-size: 46px;
+		}
+
+		&__progess {}
+	}
+	.numpurchases-chart-icons {
+		width: 70px;
+	}
+
+	.numpurchases-info .slick-dots {
+		padding-top: calc(100% + 74px);
+	}
 }
