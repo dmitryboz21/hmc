@@ -1029,11 +1029,62 @@
 
 		&__progess {}
 	}
+
 	.numpurchases-chart-icons {
 		width: 70px;
 	}
 
 	.numpurchases-info .slick-dots {
 		padding-top: calc(100% + 74px);
+	}
+
+	.topsellers {
+		margin-top: 100px;
+	}
+
+	.topsellers-block {
+		margin-top: 55px;
+	}
+
+	.topsellers-item {
+		width: 100%;
+		margin: 0 10px 40px;
+
+
+		&__inner {
+			padding: 27px 24px 20px;
+		}
+
+		&__pic {
+			width: 65px;
+			height: 65px;
+		}
+
+		&__list {
+			margin-top: 19px;
+		}
+
+
+		&__arts {}
+
+		&__art {
+			&--1 {}
+
+			&--2 {}
+
+
+			&--3 {}
+
+
+			&--4 {}
+
+
+			&--5 {}
+		}
+
+
+
+
+
 	}
 }
