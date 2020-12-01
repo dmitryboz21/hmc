@@ -643,5 +643,227 @@
 
 @media screen and (max-width: 710px) {
 
+    .dashboard {
+        padding-top: 74px;
+    }
 
+    .dshb-stat1 {
+        margin-top: 84px;
+    }
+
+    .dshb-stat1-item {
+        width: calc(50% - 20px);
+        margin: 0 10px 50px;
+    }
+
+    .dshb-stat1-item__inner {
+        padding-bottom: 65.5%;
+    }
+
+
+    .dshb-stat1-item__text {
+        padding: 23px 28px 0;
+
+    }
+
+
+    .dshb-stat1-item__digits {
+        font-size: 46px;
+        line-height: 1;
+    }
+
+    .dshb-stat1-item__dimension {
+        font-size: 17px;
+        line-height: 130%;
+        margin-top: 1px;
+    }
+
+    .dshb-stat1-item__more-digits {
+
+        margin-top: 10px;
+    }
+
+    .dshb-stat1-item__pic {
+        margin: 15px -11px -7px auto;
+        height: 54%;
+    }
+
+    .dshb-stat1-item:hover .dshb-stat1-item__pic {
+        height: 48%;
+    }
+
+    .dshb-stat2 {
+        margin-top: 71px;
+    }
+
+    .dshb-stat2-item {
+        width: 100%;
+    }
+
+    .dshb-stat2-item {
+        margin: 0 10px 81px;
+
+        &__inner {
+            padding: 30px 15px 53px 38px;
+        }
+
+        &__arts {}
+
+        &__art {
+            &--1 {}
+
+            &--2 {}
+
+
+            &--3 {}
+
+
+            &--4 {}
+
+
+            &--5 {}
+        }
+
+        &__title {
+            font-size: 27px;
+            line-height: 37px;
+        }
+
+        &__flex {
+            margin-top: 21px;
+        }
+
+        &__flex-left {}
+
+        &__flex-right {}
+
+        &__digits {
+            font-size: 38px;
+            line-height: 1.2;
+        }
+
+        &__type {
+            font-size: 17px;
+            line-height: 150%;
+        }
+
+        &__more-digits {
+            font-size: 17px;
+            line-height: 150%;
+        }
+    }
+
+    .numpurchases {
+        margin-top: 59px;
+    }
+
+    .numpurchases-block {
+        margin-top: 60px;
+        padding: 61px 30px 59px;
+        display: block;
+    }
+
+    .numpurchases-info {
+        width: 100%;
+        position: relative;
+        height: 150px;
+    }
+
+    .numpurchases-info-item__progess {
+        display: none !important;
+
+    }
+
+    .numpurchases-info-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        opacity: 0;
+        transition-duration: .3s;
+
+        &--active {
+            opacity: 1;
+        }
+
+    }
+
+    .numpurchases-info-item__value {
+        margin-left: 0;
+        min-width: unset;
+        text-align: center;
+        font-size: 46px;
+        line-height: 1;
+        margin-top: 18px;
+    }
+
+    .numpurchases-info-item+.numpurchases-info-item {
+        padding-top: 0;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dshb-stat2-item {
+    &__inner {}
+
+    &__arts {}
+
+    &__art {
+        &--1 {}
+
+        &--2 {}
+
+
+        &--3 {}
+
+
+        &--4 {}
+
+
+        &--5 {}
+    }
+
+    &__title {}
+
+    &__flex {}
+
+    &__flex-left {}
+
+    &__flex-right {}
+
+    &__digits {}
+
+    &__type {}
+
+    &__more-digits {}
 }
