@@ -17,7 +17,7 @@
 var resize_my_canvas;
 var currentIndexOfChart = -1;
 var numpurchasesInfoItems;
-
+var sliderActive = false;
 
 var chartChangeInterval = 0;
 var stopPercentAnimFlag = false;
@@ -58,6 +58,7 @@ $(document).ready(function () {
 			currentIndexOfChart = newIndex;
 			changeIcon();
 
+			$( '.js-numpurchases-info' ).slick('slickGoTo', currentIndexOfChart);
 
 
 
@@ -457,7 +458,7 @@ $(document).ready(function () {
 
 
 
-					/*	console.log(current_dfStart, current_dfEnd, nextIndex, nextIndex);*/
+						/*	console.log(current_dfStart, current_dfEnd, nextIndex, nextIndex);*/
 
 						interface.drawPart(current_dfStart, current_dfEnd, nextIndex, nextIndex);
 
@@ -690,10 +691,41 @@ $(document).ready(function () {
 
 
 
+	function initNumpurSlider() {
+		sliderActive = true;
+		$('.js-numpurchases-info').slick({
+			dots: true,
+			infinite: false,
+			speed: 300,
+			arrows: false,
+			slidesToShow: 1,
+			slidesToScroll: 1,
+		});
+	}
+
+	$('.js-numpurchases-info').on('afterChange', function (event, slick, currentSlide) {
+		console.log(currentSlide);
+	});
+
+	function killNumpurSlider() {
+		sliderActive = false;
+		$('.js-numpurchases-info').slick('unslick');
+	}
+
+	if (window.matchMedia('(max-width: 710px)').matches) {
+		initNumpurSlider();
+	}
 
 
+	$('html,body').resize(function () {
 
+		if (window.matchMedia('(max-width: 710px)').matches) {
+			if (!sliderActive) {
+				initNumpurSlider();
 
-
-
+			}
+		} else {
+			killNumpurSlider();
+		}
+	});
 });

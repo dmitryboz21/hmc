@@ -766,7 +766,7 @@
     .numpurchases-info {
         width: 100%;
         position: relative;
-        height: 150px;
+        height: 122px;
     }
 
     .numpurchases-info-item__progess {
@@ -779,16 +779,11 @@
         flex-direction: column;
         align-items: center;
         border: none;
-        position: absolute;
-        left: 0;
-        top: 0;
         width: 100%;
-        opacity: 0;
         transition-duration: .3s;
+        text-align: center;
+        outline: none;
 
-        &--active {
-            opacity: 1;
-        }
 
     }
 
@@ -803,6 +798,14 @@
 
     .numpurchases-info-item+.numpurchases-info-item {
         padding-top: 0;
+    }
+
+    .numpurchases-chart-wrap {
+        margin-left: 25px;
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        margin-top: 15px;
     }
 }
 

@@ -146,10 +146,10 @@ block main
 			h2.dashboard-h2 Количество покупок в категории
 		.dashboard-container.dashboard-container--chart
 			.numpurchases-block
-				.numpurchases-info
+				.numpurchases-info.js-numpurchases-info
 					//data-target - это индекс элемента(нумерация с нуля)
 					//style="color:...;" - задаёшь цвет текста при ховере
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="0" style="color:#61DB45;")
+					.numpurchases-info-item.numpurchases-info-item--active.js-numpurchases-info-item(data-target="0" style="color:#61DB45;")
 						.numpurchases-info-item__name Продукты и супермаркеты
 						#food.numpurchases-info-item__value 41,27%
 						.numpurchases-info-item__progess(style=" background-color: #61DB45;")

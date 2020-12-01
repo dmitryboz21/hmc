@@ -511,8 +511,11 @@ a {
 	/*&.numpurchases-info-item--active{
 		pointer-events: none;
 	}*/
-	&:not(:hover) {
-		color: #D0D0D0 !important;
+	@media screen and (min-width:711px) {
+		&:not(:hover) {
+			color: #D0D0D0 !important;
+		}
+
 	}
 
 	transition-duration: .3s;
