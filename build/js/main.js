@@ -164,6 +164,114 @@ $(document).ready(function () {
 	}
 
 
+
+
+	///////////////CHART.JS
+
+	function initMyChart(){
+		myChart = new Chart(ctx, {
+			// The type of chart we want to create
+			type: 'doughnut',
+
+			// The data for our dataset
+			data: {
+				//labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
+				datasets: [{
+					label: 'My First dataset',
+					backgroundColor: '#4F5566',
+					borderColor: '#3B4255',
+					hoverBorderColor: '#3B4255',
+					borderWidth: chartItemSpace,
+					hoverBackgroundColor: '#5F6576',
+					data: chartDataInPercent,
+				}]
+			},
+
+			// Configuration options go here
+			options: {
+				responsive: false,
+				cutoutPercentage: 64,
+				legend: {
+					display: false
+				},
+				tooltips: false,
+				events: ['mousemove', 'click'],
+				onHover: function (evt, activeElements) {
+
+				},
+				onClick: function (evt, elements) {
+					var datasetIndex;
+					var dataset;
+
+					if (elements.length) {
+						//console.log(elements[0]);
+
+						//var index = elements[0]._index;
+						//datasetIndex = elements[0]._datasetIndex;
+
+						if (currentIndexOfChart === -1) {
+							currentIndexOfChart = elements[0]._index;
+							drawDount.animate('first', currentIndexOfChart);
+						} else {
+
+							drawDount.animate('change', currentIndexOfChart, elements[0]._index);
+							currentIndexOfChart = elements[0]._index;
+						}
+
+
+
+						var $this = $('.js-numpurchases-info-item').eq(currentIndexOfChart);
+						$this.addClass('numpurchases-info-item--active')
+							.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+							.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+						$this.find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
+
+
+						clearInterval(chartChangeInterval);
+						chartChangeTime();
+						changeIcon();
+
+						if (!sliderActive) {
+							if (!$this.hasClass('numpurchases-info-item--active')) {
+
+								/*$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
+								$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
+							}
+						} else {
+
+
+							$('.js-numpurchases-info').slick('slickGoTo', currentIndexOfChart);
+
+						}
+
+
+
+
+					}
+
+					//myChart.update();
+				},
+
+				animation: {
+					duration: 0 // general animation time
+				},
+				/*	hover: {
+						animationDuration: 0 // duration of animations when hovering an item
+					},*/
+				responsiveAnimationDuration: 0 // animation duration after a resize
+			}
+		});
+
+	}
+	function destroyMyChart(){
+		myChart.destroy();
+	}
+
+	///////////////events
+	initMyChart();
+
+
+
 	/////////////////CUSTOM active chart
 
 
@@ -568,111 +676,7 @@ $(document).ready(function () {
 		drawDount.animate('change', 1, 4);
 	}, 3000);
 */
-	///////////////CHART.JS
 
-	function initMyChart(){
-		myChart = new Chart(ctx, {
-			// The type of chart we want to create
-			type: 'doughnut',
-
-			// The data for our dataset
-			data: {
-				//labels: ['41,27%', '11,73%', '7,28%', '6,57%', '6,06%'],
-				datasets: [{
-					label: 'My First dataset',
-					backgroundColor: '#4F5566',
-					borderColor: '#3B4255',
-					hoverBorderColor: '#3B4255',
-					borderWidth: chartItemSpace,
-					hoverBackgroundColor: '#5F6576',
-					data: chartDataInPercent,
-				}]
-			},
-
-			// Configuration options go here
-			options: {
-				responsive: false,
-				cutoutPercentage: 64,
-				legend: {
-					display: false
-				},
-				tooltips: false,
-				events: ['mousemove', 'click'],
-				onHover: function (evt, activeElements) {
-
-				},
-				onClick: function (evt, elements) {
-					var datasetIndex;
-					var dataset;
-
-					if (elements.length) {
-						//console.log(elements[0]);
-
-						//var index = elements[0]._index;
-						//datasetIndex = elements[0]._datasetIndex;
-
-						if (currentIndexOfChart === -1) {
-							currentIndexOfChart = elements[0]._index;
-							drawDount.animate('first', currentIndexOfChart);
-						} else {
-
-							drawDount.animate('change', currentIndexOfChart, elements[0]._index);
-							currentIndexOfChart = elements[0]._index;
-						}
-
-
-
-						var $this = $('.js-numpurchases-info-item').eq(currentIndexOfChart);
-						$this.addClass('numpurchases-info-item--active')
-							.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
-							.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
-						$this.find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
-
-
-						clearInterval(chartChangeInterval);
-						chartChangeTime();
-						changeIcon();
-
-						if (!sliderActive) {
-							if (!$this.hasClass('numpurchases-info-item--active')) {
-
-								/*$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
-								$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
-							}
-						} else {
-
-
-							$('.js-numpurchases-info').slick('slickGoTo', currentIndexOfChart);
-
-						}
-
-
-
-
-					}
-
-					//myChart.update();
-				},
-
-				animation: {
-					duration: 0 // general animation time
-				},
-				/*	hover: {
-						animationDuration: 0 // duration of animations when hovering an item
-					},*/
-				responsiveAnimationDuration: 0 // animation duration after a resize
-			}
-		});
-
-	}
-	setTimeout(function(){
-		initMyChart();
-	},600);
-	function destroyMyChart(){
-		myChart.destroy();
-	}
-
-	///////////////events
 
 	function triggerChartHover(idx) {
 		var meta = myChart.getDatasetMeta(0),
