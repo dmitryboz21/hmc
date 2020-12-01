@@ -58,8 +58,10 @@ $(document).ready(function () {
 			currentIndexOfChart = newIndex;
 			changeIcon();
 
-			$( '.js-numpurchases-info' ).slick('slickGoTo', currentIndexOfChart);
+			if (sliderActive) {
+				$('.js-numpurchases-info').slick('slickGoTo', currentIndexOfChart);
 
+			}
 
 
 		}, 3000);
@@ -662,34 +664,59 @@ $(document).ready(function () {
 
 
 	$('.js-numpurchases-info-item').on('click', function () {
-		if (!$(this).hasClass('numpurchases-info-item--active')) {
 
-			/*$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
-			$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
+		if (!sliderActive) {
+			if (!$(this).hasClass('numpurchases-info-item--active')) {
 
-			$(this).addClass('numpurchases-info-item--active')
-				.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
-				.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
-			$(this).find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
+				/*$(this).addClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '100%');
+				$(this).siblings().removeClass('numpurchases-info-item--active').find('.numpurchases-info-item__progess').css('width', '0%');*/
 
-			var newIndex = parseInt($(this).attr('data-target'));
-			if (currentIndexOfChart === -1) {
-				currentIndexOfChart = newIndex;
-				drawDount.animate('first', currentIndexOfChart);
-			} else {
+				$(this).addClass('numpurchases-info-item--active')
+					.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+					.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+				$(this).find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
 
-				drawDount.animate('change', currentIndexOfChart, newIndex);
-				currentIndexOfChart = newIndex;
+				var newIndex = parseInt($(this).attr('data-target'));
+				if (currentIndexOfChart === -1) {
+					currentIndexOfChart = newIndex;
+					drawDount.animate('first', currentIndexOfChart);
+				} else {
+
+					drawDount.animate('change', currentIndexOfChart, newIndex);
+					currentIndexOfChart = newIndex;
+				}
+
+				clearInterval(chartChangeInterval);
+				chartChangeTime();
+				changeIcon();
 			}
-
-			clearInterval(chartChangeInterval);
-			chartChangeTime();
-			changeIcon();
 		}
 	});
 
 
 
+	$('.js-numpurchases-info').on('afterChange', function (event, slick, currentSlide) {
+
+
+		/*$(this).addClass('numpurchases-info-item--active')
+			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
+			.find('.numpurchases-info-item__progess').removeClass('numpurchases-info-item__progess--anim');
+		$(this).find('.numpurchases-info-item__progess').addClass('numpurchases-info-item__progess--anim');
+*/
+		var newIndex = currentSlide;
+		if (currentIndexOfChart === -1) {
+			currentIndexOfChart = newIndex;
+			drawDount.animate('first', currentIndexOfChart);
+		} else {
+
+			drawDount.animate('change', currentIndexOfChart, newIndex);
+			currentIndexOfChart = newIndex;
+		}
+
+		clearInterval(chartChangeInterval);
+		chartChangeTime();
+		changeIcon();
+	});
 
 	function initNumpurSlider() {
 		sliderActive = true;
@@ -703,9 +730,6 @@ $(document).ready(function () {
 		});
 	}
 
-	$('.js-numpurchases-info').on('afterChange', function (event, slick, currentSlide) {
-		console.log(currentSlide);
-	});
 
 	function killNumpurSlider() {
 		sliderActive = false;
