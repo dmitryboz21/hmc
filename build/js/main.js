@@ -665,7 +665,9 @@ $(document).ready(function () {
 		});
 
 	}
-	initMyChart();
+	setTimeout(function(){
+		initMyChart();
+	},600);
 	function destroyMyChart(){
 		myChart.destroy();
 	}
