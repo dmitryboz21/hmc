@@ -229,7 +229,7 @@
 			width: 65px;
 			height: 65px;
 			object-fit: contain;
-			object-position: center left;
+			object-position: center center;
 			display: block;
 		}
 
@@ -1068,23 +1068,44 @@
 		&__arts {}
 
 		&__art {
-			&--1 {}
+			&--1 {
+				top: 40%;
+				left: 30%;
+			}
 
-			&--2 {}
+			&--2 {
+				display: block;
+				bottom: 37%;
+				left: 44.5%;
+			}
 
 
-			&--3 {}
+			&--3 {
+				bottom: 37%;
+				left: 44.5%;
+			}
 
 
-			&--4 {}
+			&--4 {
+				bottom: 80%;
+				left: 77%;
+				display: block;
+			}
 
 
-			&--5 {}
 		}
 
 
 
 
 
+	}
+}
+
+
+
+@media screen and (max-width: 400px) {
+	.dshb-stat2-item__digits {
+		font-size: 28px;
 	}
 }
