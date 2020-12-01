@@ -10,27 +10,6 @@ var stopPercentAnimFlag = false;
 $(document).ready(function () {
 	numpurchasesInfoItems = $('.numpurchases-info-item').length;
 
-	var chartWrap = $('#numpurchases-chart-wrap'),
-		chart = $('#numpurchases-chart'),
-		topLayer = $('#numpurchases-chart-active-level'),
-		numpurchasesInfo = $('.numpurchases-info'),
-		chartWrapH,
-		chartWrapW;
-
-	resize_my_canvas = function () {
-		chartWrapH = roundEven(chartWrap.height() + 6);
-		chartWrapW = roundEven(chartWrap.width() + 6);
-		chart.attr('height', chartWrapH);
-		chart.attr('width', chartWrapW);
-		topLayer.attr('height', chartWrapH);
-		topLayer.attr('width', chartWrapW);
-
-	}
-	resize_my_canvas();
-
-	var chartItemSpace = 3;
-
-
 	function changeIcon() {
 		$('#numpurchases-chart-icons .numpurchases-chi-item').eq(currentIndexOfChart).addClass('numpurchases-chi-item--active').siblings().removeClass('numpurchases-chi-item--active');
 	}
@@ -73,7 +52,85 @@ $(document).ready(function () {
 	}
 
 
+	function roundEven(d) { //округление до четного
+		return Math.round(d / 2) * 2;
+	}
+
+	var chartWrap = $('#numpurchases-chart-wrap'),
+		chart = $('#numpurchases-chart'),
+		topLayer = $('#numpurchases-chart-active-level'),
+		numpurchasesInfo = $('.numpurchases-info'),
+		chartWrapH,
+		chartWrapW;
+
+	resize_my_canvas = function () {
+		chartWrapH = roundEven(chartWrap.height() + 6);
+		chartWrapW = roundEven(chartWrap.width() + 6);
+		chart.attr('height', chartWrapH);
+		chart.attr('width', chartWrapW);
+		topLayer.attr('height', chartWrapH);
+		topLayer.attr('width', chartWrapW);
+
+	}
+	resize_my_canvas();
+	var chartItemSpace = 3;
+
+
+
+
+	function arraySum(array) {
+		var sum = 0;
+		for (var i = 0; i < array.length; i++) {
+			sum += Math.max(array[i], 0.7);
+		}
+		return (sum);
+	}
+	/*
+		var backgroundColorsForGrad = [
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['rgb(180,246,165)', 'rgb(98,219,70)'],
+			['rgb(255,170,86)', 'rgb(255,127,0)'],
+			['rgb(180,246,165)', 'rgb(98,219,70)']
+		]
+	*/
+	//var chartData = [41.27, 11.73, 7.28, 6.57, 6.06];
+	var chartDataInPercent = [];
+	var chartDataSum = arraySum(chartData);
+	var chartDataPercent = chartDataSum / 100;
+	var chartDataLength = chartData.length;
+
+
+	chartData.forEach(function (item, index, chartData) {
+		chartDataInPercent[index] = Math.max(item, 0.7) / chartDataPercent;
+	});
+
+
+
+
+
+
+
+
+	function getPoint(c1, c2, radius, angle) { //смещение точки по окружности
+		return [c1 + Math.cos(angle) * radius, c2 + Math.sin(angle) * radius];
+	}
+
+	function radToAngle(rad) {
+		return (rad * 180 / Math.PI);
+	}
+
+	function angleToRad(angle) {
+		return (angle * Math.PI / 180);
+	}
+
+
+
+
 	///////////////CHART.JS
+
+	var ctx = document.getElementById('numpurchases-chart').getContext('2d');
+
 
 	function initMyChart() {
 		myChart = new Chart(ctx, {
@@ -171,12 +228,16 @@ $(document).ready(function () {
 
 	}
 
+	initMyChart();
+
 	function destroyMyChart() {
 		myChart.destroy();
 	}
 
 	///////////////events
-	initMyChart();
+
+
+
 	$flagRunAnim = false;
 	$(document).scroll(function () {
 		if (!$flagRunAnim) {
@@ -195,69 +256,6 @@ $(document).ready(function () {
 			}
 		}
 	});
-
-
-	function roundEven(d) { //округление до четного
-		return Math.round(d / 2) * 2;
-	}
-
-
-
-	var ctx = document.getElementById('numpurchases-chart').getContext('2d');
-
-
-
-
-	function arraySum(array) {
-		var sum = 0;
-		for (var i = 0; i < array.length; i++) {
-			sum += Math.max(array[i], 0.7);
-		}
-		return (sum);
-	}
-	/*
-		var backgroundColorsForGrad = [
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['rgb(180,246,165)', 'rgb(98,219,70)'],
-			['rgb(255,170,86)', 'rgb(255,127,0)'],
-			['rgb(180,246,165)', 'rgb(98,219,70)']
-		]
-	*/
-	//var chartData = [41.27, 11.73, 7.28, 6.57, 6.06];
-	var chartDataInPercent = [];
-	var chartDataSum = arraySum(chartData);
-	var chartDataPercent = chartDataSum / 100;
-	var chartDataLength = chartData.length;
-
-
-	chartData.forEach(function (item, index, chartData) {
-		chartDataInPercent[index] = Math.max(item, 0.7) / chartDataPercent;
-	});
-
-
-
-
-
-
-
-
-	function getPoint(c1, c2, radius, angle) { //смещение точки по окружности
-		return [c1 + Math.cos(angle) * radius, c2 + Math.sin(angle) * radius];
-	}
-
-	function radToAngle(rad) {
-		return (rad * 180 / Math.PI);
-	}
-
-	function angleToRad(angle) {
-		return (angle * Math.PI / 180);
-	}
-
-
-
-
-
 
 
 	/////////////////CUSTOM active chart
