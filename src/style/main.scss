@@ -1,11 +1,16 @@
 @import "partials/reset.css";
-@import "partials/Chart.min.css";
-@import "partials/slick.css";
+//@import "partials/Chart.min.css";
+@import "partials/fonts.css";
+//@import "partials/slick.css";
+@import "partials/aos.css";
 
 /* my style */
 
 @import "partials/_var";
 
 @import "partials/mixin";
-@import "partials/main";
-@import "partials/main-adaptive";
+//@import "partials/main";
+//@import "partials/main-adaptive";
+
+@import "partials/new-main";
+@import "partials/new-main-adaptive";

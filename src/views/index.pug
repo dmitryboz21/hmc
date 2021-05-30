@@ -13,10 +13,9 @@ block main
 
 	section.dashboard
 		.dashboard-container
-			h1.dashboard-h1 Дашборд
-			h1.dashboard-info Мы решили, что вам будет интересно узнать, как наши клиенты пользуются своими картами
+			h1.dashboard-h1(data-aos="fade-up") Home Credit Bank Card’s Portfolio
 			.dshb-stat1
-				.dshb-stat1-item
+				.dshb-stat1-item(data-aos="custom-anim-1")
 					.dshb-stat1-item__inner
 						.dshb-stat1-item__arts
 							.dshb-stat1-item__art.dshb-stat1-item__art--1
@@ -24,13 +23,23 @@ block main
 							.dshb-stat1-item__art.dshb-stat1-item__art--3
 							.dshb-stat1-item__art.dshb-stat1-item__art--4
 							.dshb-stat1-item__art.dshb-stat1-item__art--5
+							.dshb-stat1-item__art.dshb-stat1-item__art--6
+							.dshb-stat1-item__art.dshb-stat1-item__art--7
+							.dshb-stat1-item__art.dshb-stat1-item__art--8
 						.dshb-stat1-item__text
-							.dshb-stat1-item__digits 2,5
-							.dshb-stat1-item__dimension млн клиентов
+							.dshb-stat1-item__text-top
+								.dshb-stat1-item__digits 2
+								.dshb-stat1-item__dimension млн
+							.dshb-stat1-item__description активных клиентов
 							#client.dshb-stat1-item__more-digits 2 567 880
-							.dshb-stat1-item__description Количество клиентов со счетами в рублях
-						img.dshb-stat1-item__pic(src="images/people.svg", alt="")
-				.dshb-stat1-item
+						.dshb-stat1-item__text
+							.dshb-stat1-item__text-top
+								.dshb-stat1-item__digits 979
+								.dshb-stat1-item__dimension тыс
+							.dshb-stat1-item__description активных <br class="dd"> карточных <br class="dd"> клиентов
+							#client-2.dshb-stat1-item__more-digits 979 782
+						img.dshb-stat1-item__pic.dshb-stat1-item__pic--1(src="images/dshb-stat1-1.png", alt="")
+				.dshb-stat1-item(data-aos="custom-anim-1")
 					.dshb-stat1-item__inner
 						.dshb-stat1-item__arts
 							.dshb-stat1-item__art.dshb-stat1-item__art--1
@@ -38,13 +47,17 @@ block main
 							.dshb-stat1-item__art.dshb-stat1-item__art--3
 							.dshb-stat1-item__art.dshb-stat1-item__art--4
 							.dshb-stat1-item__art.dshb-stat1-item__art--5
+							.dshb-stat1-item__art.dshb-stat1-item__art--6
+							.dshb-stat1-item__art.dshb-stat1-item__art--7
+							.dshb-stat1-item__art.dshb-stat1-item__art--8
 						.dshb-stat1-item__text
-							.dshb-stat1-item__digits 791
-							.dshb-stat1-item__dimension млн покупок
+							.dshb-stat1-item__text-top
+								.dshb-stat1-item__digits.dshb-stat1-item__digits--first-digit-one 178
+								.dshb-stat1-item__dimension млн
+							.dshb-stat1-item__description покупок
 							#buy.dshb-stat1-item__more-digits 791 568 980
-							.dshb-stat1-item__description Количество клиентов со счетами в рублях
-						img.dshb-stat1-item__pic(src="images/cart.svg", alt="")
-				.dshb-stat1-item
+						img.dshb-stat1-item__pic.dshb-stat1-item__pic--2(src="images/dshb-stat1-2.png", alt="")
+				.dshb-stat1-item(data-aos="custom-anim-1")
 					.dshb-stat1-item__inner
 						.dshb-stat1-item__arts
 							.dshb-stat1-item__art.dshb-stat1-item__art--1
@@ -52,13 +65,17 @@ block main
 							.dshb-stat1-item__art.dshb-stat1-item__art--3
 							.dshb-stat1-item__art.dshb-stat1-item__art--4
 							.dshb-stat1-item__art.dshb-stat1-item__art--5
+							.dshb-stat1-item__art.dshb-stat1-item__art--6
+							.dshb-stat1-item__art.dshb-stat1-item__art--7
+							.dshb-stat1-item__art.dshb-stat1-item__art--8
 						.dshb-stat1-item__text
-							.dshb-stat1-item__digits 337
-							.dshb-stat1-item__dimension млрд потрачено
-							#spent.dshb-stat1-item__more-digits 337 256 789 785
-							.dshb-stat1-item__description Количество клиентов со счетами в рублях
-						img.dshb-stat1-item__pic(src="images/purse.svg", alt="")
-				.dshb-stat1-item
+							.dshb-stat1-item__text-top
+								.dshb-stat1-item__digits.dshb-stat1-item__digits--first-digit-one 160
+								.dshb-stat1-item__dimension млрд
+							.dshb-stat1-item__description потрачено
+							#buy.dshb-stat1-item__more-digits 160 256 789 785<span class="dshb-stat1-item__more-digits-rouble">₽</span>
+						img.dshb-stat1-item__pic.dshb-stat1-item__pic--3(src="images/dshb-stat1-3.png", alt="")
+				.dshb-stat1-item(data-aos="custom-anim-1")
 					.dshb-stat1-item__inner
 						.dshb-stat1-item__arts
 							.dshb-stat1-item__art.dshb-stat1-item__art--1
@@ -66,17 +83,20 @@ block main
 							.dshb-stat1-item__art.dshb-stat1-item__art--3
 							.dshb-stat1-item__art.dshb-stat1-item__art--4
 							.dshb-stat1-item__art.dshb-stat1-item__art--5
+							.dshb-stat1-item__art.dshb-stat1-item__art--6
+							.dshb-stat1-item__art.dshb-stat1-item__art--7
+							.dshb-stat1-item__art.dshb-stat1-item__art--8
 						.dshb-stat1-item__text
-							.dshb-stat1-item__digits 1,3
-							.dshb-stat1-item__dimension млрд кешбэка
-							#cashback.dshb-stat1-item__more-digits 1 657 789 864
-							.dshb-stat1-item__description Количество клиентов со счетами в рублях
-						img.dshb-stat1-item__pic(src="images/cashback.svg", alt="")
-
+							.dshb-stat1-item__text-top
+								.dshb-stat1-item__digits.dshb-stat1-item__digits--first-digit-one 1
+								.dshb-stat1-item__dimension млрд
+							.dshb-stat1-item__description кэшбека
+							#buy.dshb-stat1-item__more-digits 1 657 789 864<span class="dshb-stat1-item__more-digits-rouble">₽</span>
+						img.dshb-stat1-item__pic.dshb-stat1-item__pic--4(src="images/dshb-stat1-4.png", alt="")
 
 
 			.dshb-stat2
-				.dshb-stat2-item
+				.dshb-stat2-item(data-aos="fade-up")
 					.dshb-stat2-item__inner
 						.dshb-stat2-item__arts
 							.dshb-stat2-item__art.dshb-stat2-item__art--1
@@ -84,35 +104,55 @@ block main
 							.dshb-stat2-item__art.dshb-stat2-item__art--3
 							.dshb-stat2-item__art.dshb-stat2-item__art--4
 							.dshb-stat2-item__art.dshb-stat2-item__art--5
-						.dshb-stat2-item__title Платежи между картами
-						.dshb-stat2-item__flex
-							.dshb-stat2-item__flex-left
-								.dshb-stat2-item__digits 95 млн
-								.dshb-stat2-item__type исходящих
-								#outgoing_transaction.dshb-stat2-item__more-digits 95 567 880
-							.dshb-stat2-item__flex-right
-								.dshb-stat2-item__digits 70 млн
-								.dshb-stat2-item__type входящих
-								#incomin_transaction.dshb-stat2-item__more-digits 70 567 880
-				.dshb-stat2-item
-					.dshb-stat2-item__inner
-						.dshb-stat2-item__arts
-							.dshb-stat2-item__art.dshb-stat2-item__art--1
-							.dshb-stat2-item__art.dshb-stat2-item__art--2
-							.dshb-stat2-item__art.dshb-stat2-item__art--3
-							.dshb-stat2-item__art.dshb-stat2-item__art--4
-							.dshb-stat2-item__art.dshb-stat2-item__art--5
+							.dshb-stat2-item__art.dshb-stat2-item__art--6
+							.dshb-stat2-item__art.dshb-stat2-item__art--7
+							.dshb-stat2-item__art.dshb-stat2-item__art--8
 						.dshb-stat2-item__title Реферальная программа
 						.dshb-stat2-item__flex
-							.dshb-stat2-item__flex-left
-								.dshb-stat2-item__digits 1 млн
-								.dshb-stat2-item__type приглашенных
-								.dshb-stat2-item__more-digits 95 567 880
-							.dshb-stat2-item__flex-right
-								.dshb-stat2-item__digits 533 тыс
-								.dshb-stat2-item__type пригласивших
-								.dshb-stat2-item__more-digits 70 567 880
+							.dshb-stat2-item__part
+								.dshb-stat2-item__top
+									.dshb-stat2-item__digits.dshb-stat1-item__digits 54
+									.dshb-stat2-item__dimension.dshb-stat1-item__dimension ТЫС
+								.dshb-stat2-item__type.dshb-stat1-item__description приглашенных
+								.dshb-stat2-item__more-digits.dshb-stat1-item__more-digits 54 468
+							.dshb-stat2-item__part
+								.dshb-stat2-item__top
+									.dshb-stat2-item__digits.dshb-stat1-item__digits 32
+									.dshb-stat2-item__dimension.dshb-stat1-item__dimension ТЫС
+								.dshb-stat2-item__type.dshb-stat1-item__description пригласивших
+								.dshb-stat2-item__more-digits.dshb-stat1-item__more-digits 32 733
+							.dshb-stat2-item__part
+								.dshb-stat2-item__top.dshb-stat1-item__digits--first-digit-one
+									.dshb-stat2-item__digits.dshb-stat1-item__digits 13 313 580 ₽
+								.dshb-stat2-item__type.dshb-stat1-item__description бонусов выплачено
 
+				.dshb-stat2-item(data-aos="fade-up")
+					.dshb-stat2-item__inner
+
+						.dshb-stat2-item__arts
+							.dshb-stat2-item__art.dshb-stat2-item__art--1
+							.dshb-stat2-item__art.dshb-stat2-item__art--2
+							.dshb-stat2-item__art.dshb-stat2-item__art--3
+							.dshb-stat2-item__art.dshb-stat2-item__art--4
+							.dshb-stat2-item__art.dshb-stat2-item__art--5
+							.dshb-stat2-item__art.dshb-stat2-item__art--6
+							.dshb-stat2-item__art.dshb-stat2-item__art--7
+							.dshb-stat2-item__art.dshb-stat2-item__art--8
+						.dshb-stat2-item__title Пользователи мобильного приложения
+						.dshb-stat2-item__flex
+							.dshb-stat2-item__part
+								.dshb-stat2-item__top
+									.dshb-stat2-item__digits.dshb-stat1-item__digits 2
+									.dshb-stat2-item__dimension.dshb-stat1-item__dimension млн
+								.dshb-stat2-item__type.dshb-stat1-item__description активных клиентов в месяц
+								.dshb-stat2-item__more-digits.dshb-stat1-item__more-digits 2 766 108
+							.dshb-stat2-item__part
+								.dshb-stat2-item__top
+									.dshb-stat2-item__digits.dshb-stat1-item__digits 609
+									.dshb-stat2-item__dimension.dshb-stat1-item__dimension ТЫС
+								.dshb-stat2-item__type.dshb-stat1-item__description активных клиентов в день
+								.dshb-stat2-item__more-digits.dshb-stat1-item__more-digits 609 632
+						img.dshb-stat2-item__pic.dshb-stat2-item__pic--2(src="images/dshb-stat2-2.png", alt="")
 	script.
 		//массив с начальным и конечным цветом градиентов(начальный цвет - цвет тени с блюром). лучше задавать в rgb или hex
 		const backgroundColorsForGrad = [
@@ -146,133 +186,94 @@ block main
 
 	section.numpurchases
 		.dashboard-container
-			h2.dashboard-h2 Количество покупок в категории
-		.dashboard-container.dashboard-container--chart
-			.numpurchases-block
-				.numpurchases-info.js-numpurchases-info
-					//data-target - это индекс элемента(нумерация с нуля)
-					//style="color:...;" - задаёшь цвет текста при ховере
-					.numpurchases-info-item.numpurchases-info-item--active.js-numpurchases-info-item(data-target="0" style="color:#61DB45;")
-						.numpurchases-info-item__name Продукты и супермаркеты
-						#food.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style="background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="1" style="color:#FF6B00;")
-						.numpurchases-info-item__name Кафе и рестораны
-						#cafe.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="2" style="color:#2FC9C8;")
-						.numpurchases-info-item__name Прочее
-						#other.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="3" style="color:#0B8E42;")
-						.numpurchases-info-item__name Развлечения и спорт
-						#play.numpurchases-info-item__value 6,57%
-						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="4" style="color:#FFC219;")
-						.numpurchases-info-item__name Пополнение мобильного
-						#mobile.numpurchases-info-item__value 6,06%
-						.numpurchases-info-item__progess(style=" background-color: #FFC219;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="5" style="color:#61DB45;")
-						.numpurchases-info-item__name Путешествия
-						#travel.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #61DB45;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="6" style="color:#DB0626;")
-						.numpurchases-info-item__name Красота и медицина
-						#beauty.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #DB0626;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="7" style="color:#A15CE6;")
-						.numpurchases-info-item__name Такси
-						#taxi.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="8" style="color:#004FFF;")
-						.numpurchases-info-item__name Коммуналка и интернет
-						#communal.numpurchases-info-item__value 6,57%
-						.numpurchases-info-item__progess(style=" background-color: #004FFF;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="9" style="color:#0B8E42;")
-						.numpurchases-info-item__name Авто
-						#auto.numpurchases-info-item__value 6,06%
-						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="10" style="color:#FFC219;")
-						.numpurchases-info-item__name Одежда и обувь
-						#dress.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #FFC219;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="11" style="color:#2FC9C8;")
-						.numpurchases-info-item__name Ремонт
-						#fix.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="12" style="color:#A15CE6;")
-						.numpurchases-info-item__name Кино
-						#cinema.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="13" style="color:#FF6B00;")
-						.numpurchases-info-item__name Бытовая техника
-						#appliances.numpurchases-info-item__value 6,57%
-						.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="14" style="color:#0B8E42;")
-						.numpurchases-info-item__name Животные
-						#animals.numpurchases-info-item__value 6,06%
-						.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="15" style="color:#004FFF;")
-						.numpurchases-info-item__name Бюджет и налоги
-						#taxes.numpurchases-info-item__value 41,27%
-						.numpurchases-info-item__progess(style=" background-color: #004FFF;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="16" style="color:#DB0626;")
-						.numpurchases-info-item__name Книги
-						#book.numpurchases-info-item__value 11,73%
-						.numpurchases-info-item__progess(style=" background-color: #DB0626;")
-					.numpurchases-info-item.js-numpurchases-info-item(data-target="17" style="color:#A15CE6;")
-						.numpurchases-info-item__name Duty Free
-						#duty_free.numpurchases-info-item__value 7,28%
-						.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
+			.numpurchases-inner
+				h2.dashboard-h2(data-aos="fade-up") Количество покупок в категории
 
-				#numpurchases-chart-wrap.numpurchases-chart-wrap
-					canvas#numpurchases-chart
-					canvas#numpurchases-chart-active-level
+				.numpurchases-block(data-aos="fade-up")
+					.numpurchases-info.js-numpurchases-info
+						//data-target - это индекс элемента(нумерация с нуля)
+						//style="color:...;" - задаёшь цвет текста при ховере
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="0" style="color:#026DFD;")
+							.numpurchases-info-item__name Продукты и супермаркеты
+							#food.numpurchases-info-item__value 41 ,27%
+							.numpurchases-info-item__progess(style="background-color: #026DFD;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="1" style="color:#FF6B00;")
+							.numpurchases-info-item__name Кафе и рестораны
+							#cafe.numpurchases-info-item__value 11 ,73%
+							.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="2" style="color:#2FC9C8;")
+							.numpurchases-info-item__name Прочее
+							#other.numpurchases-info-item__value 7 ,28%
+							.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="3" style="color:#0B8E42;")
+							.numpurchases-info-item__name Развлечения и спорт
+							#play.numpurchases-info-item__value 6 ,57%
+							.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="4" style="color:#FFC219;")
+							.numpurchases-info-item__name Пополнение мобильного
+							#mobile.numpurchases-info-item__value 6 ,06%
+							.numpurchases-info-item__progess(style=" background-color: #FFC219;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="5" style="color:#61DB45;")
+							.numpurchases-info-item__name Путешествия
+							#travel.numpurchases-info-item__value 5 ,23%
+							.numpurchases-info-item__progess(style=" background-color: #61DB45;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="6" style="color:#DB0626;")
+							.numpurchases-info-item__name Красота и медицина
+							#beauty.numpurchases-info-item__value 5 ,10%
+							.numpurchases-info-item__progess(style=" background-color: #DB0626;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="7" style="color:#A15CE6;")
+							.numpurchases-info-item__name Такси
+							#taxi.numpurchases-info-item__value 4 ,20%
+							.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="8" style="color:#004FFF;")
+							.numpurchases-info-item__name Коммуналка и интернет
+							#communal.numpurchases-info-item__value 3 ,99%
+							.numpurchases-info-item__progess(style=" background-color: #004FFF;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="9" style="color:#0B8E42;")
+							.numpurchases-info-item__name Авто
+							#auto.numpurchases-info-item__value 3 ,98%
+							.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="10" style="color:#FFC219;")
+							.numpurchases-info-item__name Одежда и обувь
+							#dress.numpurchases-info-item__value 1 ,33%
+							.numpurchases-info-item__progess(style=" background-color: #FFC219;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="11" style="color:#2FC9C8;")
+							.numpurchases-info-item__name Ремонт
+							#fix.numpurchases-info-item__value 1 ,30%
+							.numpurchases-info-item__progess(style=" background-color: #2FC9C8;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="12" style="color:#A15CE6;")
+							.numpurchases-info-item__name Кино
+							#cinema.numpurchases-info-item__value 0 ,59%
+							.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="13" style="color:#FF6B00;")
+							.numpurchases-info-item__name Бытовая техника
+							#appliances.numpurchases-info-item__value 0 ,56%
+							.numpurchases-info-item__progess(style=" background-color: #FF6B00;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="14" style="color:#0B8E42;")
+							.numpurchases-info-item__name Животные
+							#animals.numpurchases-info-item__value 0 ,35%
+							.numpurchases-info-item__progess(style=" background-color: #0B8E42;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="15" style="color:#004FFF;")
+							.numpurchases-info-item__name Бюджет и налоги
+							#taxes.numpurchases-info-item__value 0 ,23%
+							.numpurchases-info-item__progess(style=" background-color: #004FFF;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="16" style="color:#DB0626;")
+							.numpurchases-info-item__name Книги
+							#book.numpurchases-info-item__value 0 ,17%
+							.numpurchases-info-item__progess(style=" background-color: #DB0626;")
+						.numpurchases-info-item.js-numpurchases-info-item(data-target="17" style="color:#A15CE6;")
+							.numpurchases-info-item__name Duty Free
+							#duty_free.numpurchases-info-item__value 0 ,05%
+							.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
 
-					#numpurchases-chart-icons.numpurchases-chart-icons
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-1.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-2.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-3.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-4.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-5.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-6.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-7.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-8.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-9.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-10.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-11.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-12.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-13.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-14.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-15.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-16.svg", alt="")
-						.numpurchases-chi-item
-							img.numpurchases-chi-tiem__pic(src="images/last-section/Vectorls-icon-17.svg", alt="")
-
+					#numpurchases-chart-wrap.numpurchases-chart-wrap
+						img(src="images/chart-placeholder.jpg", alt="")
 
 	section.topsellers
 		.dashboard-container.dashboard-container--topsellers
-			h2.dashboard-h2 Топ 5 продавцов по количеству покупок
+			h2.dashboard-h2(data-aos="fade-up") Топ 5 продавцов по количеству покупок
 			.topsellers-block
-				.topsellers-item
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -280,26 +281,26 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon.svg", alt="")
-							.topsellers-item__name Продукты и&nbsp;супермаркеты
+							img.topsellers-item__pic.topsellers-item__pic--1(src="images/last-section/Vectorls-icon-1.png", alt="")
+							.topsellers-item__name Продукты<br> и розничные магазины
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name АТБ
-								.topsellers-item__li-value 52 578 885
+								.topsellers-item__li-name MAGNIT
+								.topsellers-item__li-value  10 167 774
 							.topsellers-item__list-item
-								.topsellers-item__li-name Сільпо
-								.topsellers-item__li-value 37 713 455
+								.topsellers-item__li-name PYATEROCHKA
+								.topsellers-item__li-value  9 666 535
 							.topsellers-item__list-item
-								.topsellers-item__li-name Фора
-								.topsellers-item__li-value 10 253 728
+								.topsellers-item__li-name PEREKRESTOK
+								.topsellers-item__li-value  1 825 669
 							.topsellers-item__list-item
-								.topsellers-item__li-name VARUS
-								.topsellers-item__li-value 8 676 519
+								.topsellers-item__li-name DIKSI
+								.topsellers-item__li-value  1 716 012
 							.topsellers-item__list-item
-								.topsellers-item__li-name Novus
-								.topsellers-item__li-value 8 013 180
+								.topsellers-item__li-name LENTA
+								.topsellers-item__li-value  1 782 236
 
-				.topsellers-item
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -307,25 +308,25 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-1.svg", alt="")
-							.topsellers-item__name Кафе<br>  и рестораны
+							img.topsellers-item__pic.topsellers-item__pic--2(src="images/last-section/Vectorls-icon-2.png", alt="")
+							.topsellers-item__name Одежда <br> и обувь
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
+								.topsellers-item__li-name WILDBERRIES
+								.topsellers-item__li-value 1 461 241
 							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
+								.topsellers-item__li-name OSTIN
+								.topsellers-item__li-value 157 868
 							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
+								.topsellers-item__li-name LAMODA
+								.topsellers-item__li-value 157 929
 							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
+								.topsellers-item__li-name GLORIA JEANS
+								.topsellers-item__li-value 129 390
 							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
+								.topsellers-item__li-name KARI
+								.topsellers-item__li-value 126 603
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -333,28 +334,28 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-2.svg", alt="")
-							.topsellers-item__name  Прочее
+							img.topsellers-item__pic.topsellers-item__pic--3(src="images/last-section/Vectorls-icon-3.png", alt="")
+							.topsellers-item__name  Дом <br> и ремонт
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
+								.topsellers-item__li-name LERUA MERLEN
+								.topsellers-item__li-value 345 093
 							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
+								.topsellers-item__li-name IKEA
+								.topsellers-item__li-value 118 397
 							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
+								.topsellers-item__li-name GALAMART
+								.topsellers-item__li-value 105 252
 							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
+								.topsellers-item__li-name OBI
+								.topsellers-item__li-value 63 567
 							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
+								.topsellers-item__li-name MEGASTROY
+								.topsellers-item__li-value 43 694
 
 
 
-				.topsellers-item
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -362,25 +363,25 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-3.svg", alt="")
-							.topsellers-item__name  Развлечения и спорт
+							img.topsellers-item__pic.topsellers-item__pic--4(src="images/last-section/Vectorls-icon-4.png", alt="")
+							.topsellers-item__name Детские товары
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
+								.topsellers-item__li-name DETSKIY MIR
+								.topsellers-item__li-value 510 460
 							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
+								.topsellers-item__li-name DOCHKI-SYNOCHKI
+								.topsellers-item__li-value 61 323
 							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
+								.topsellers-item__li-name RICH FAMILY
+								.topsellers-item__li-value 30 811
 							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
+								.topsellers-item__li-name KORABLIK
+								.topsellers-item__li-value 24  812
 							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
+								.topsellers-item__li-name MOTHERCARE
+								.topsellers-item__li-value 12 203
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -388,28 +389,28 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-4.svg", alt="")
-							.topsellers-item__name  Пополнение мобильного
+							img.topsellers-item__pic.topsellers-item__pic--5(src="images/last-section/Vectorls-icon-5.png", alt="")
+							.topsellers-item__name  Красота
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
+								.topsellers-item__li-name LETUAL
+								.topsellers-item__li-value 197 421
 							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
+								.topsellers-item__li-name ULYBKA RADUGI
+								.topsellers-item__li-value 60 705
 							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
+								.topsellers-item__li-name RIVE GAUCHE
+								.topsellers-item__li-value 58 125
 							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
+								.topsellers-item__li-name PODRUZHKA
+								.topsellers-item__li-value 52 363
 							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
+								.topsellers-item__li-name PARFYUM LIDER
+								.topsellers-item__li-value 34 722
 
 
 
-				.topsellers-item
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -417,25 +418,25 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-5.svg", alt="")
-							.topsellers-item__name Путешествия
+							img.topsellers-item__pic.topsellers-item__pic--6(src="images/last-section/Vectorls-icon-6.png", alt="")
+							.topsellers-item__name Электроника
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
+								.topsellers-item__li-name DNS
+								.topsellers-item__li-value 271 013
 							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
+								.topsellers-item__li-name M.VIDEO
+								.topsellers-item__li-value 189 435
 							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
+								.topsellers-item__li-name CITILINK
+								.topsellers-item__li-value 139 459
 							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
+								.topsellers-item__li-name BERU
+								.topsellers-item__li-value 31 460
 							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
+								.topsellers-item__li-name RBT.RU
+								.topsellers-item__li-value 28 553
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -443,28 +444,28 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-6.svg", alt="")
-							.topsellers-item__name  Красота и медицина
+							img.topsellers-item__pic.topsellers-item__pic--7(src="images/last-section/Vectorls-icon-7.png", alt="")
+							.topsellers-item__name  Товары для животных
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
+								.topsellers-item__li-name 4 LAPY
+								.topsellers-item__li-value 82 841
 							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
+								.topsellers-item__li-name ZOOMIR
+								.topsellers-item__li-value 16 751
 							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
+								.topsellers-item__li-name BETKHOVEN
+								.topsellers-item__li-value 14 645
 							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
+								.topsellers-item__li-name PETSHOP.RU
+								.topsellers-item__li-value 14 008
 							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
+								.topsellers-item__li-name BELYJKROLIK
+								.topsellers-item__li-value 8 615
 
 
 
-				.topsellers-item
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -472,25 +473,25 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-7.svg", alt="")
-							.topsellers-item__name  Такси
+							img.topsellers-item__pic.topsellers-item__pic--8(src="images/last-section/Vectorls-icon-8.png", alt="")
+							.topsellers-item__name  Путешествия
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
+								.topsellers-item__li-name RZD
+								.topsellers-item__li-value 156 945
 							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
+								.topsellers-item__li-name YANDEX DRIVE
+								.topsellers-item__li-value 50 089
 							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
+								.topsellers-item__li-name AEROFLOT
+								.topsellers-item__li-value 27 330
 							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
+								.topsellers-item__li-name POBEDA
+								.topsellers-item__li-value 24 788
 							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
+								.topsellers-item__li-name S7
+								.topsellers-item__li-value 16 534
+				.topsellers-item(data-aos="fade-up")
 					.topsellers-item__inner
 						.topsellers-item_arts
 							.topsellers-item__art.topsellers-item__art--1
@@ -498,273 +499,21 @@ block main
 							.topsellers-item__art.topsellers-item__art--3
 							.topsellers-item__art.topsellers-item__art--4
 						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-8.svg", alt="")
-							.topsellers-item__name  Коммуналка<br> и интернет
+							img.topsellers-item__pic.topsellers-item__pic--9(src="images/last-section/Vectorls-icon-9.png", alt="")
+							.topsellers-item__name Спорт
 						.topsellers-item__list
 							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
+								.topsellers-item__li-name SPORTMASTER
+								.topsellers-item__li-value 201 994
 							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
+								.topsellers-item__li-name DECATHLON
+								.topsellers-item__li-value 8 567
 							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
+								.topsellers-item__li-name ADIDAS
+								.topsellers-item__li-value 8 617
 							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
+								.topsellers-item__li-name PUMA
+								.topsellers-item__li-value 8 173
 							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
-
-
-
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-9.svg", alt="")
-							.topsellers-item__name  Авто
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-10.svg", alt="")
-							.topsellers-item__name  Одежда<br> и обувь
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
-
-
-
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-11.svg", alt="")
-							.topsellers-item__name  Ремонт
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-12.svg", alt="")
-							.topsellers-item__name  Кино
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
-
-
-
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-13.svg", alt="")
-							.topsellers-item__name  Бытовая техника
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-14.svg", alt="")
-							.topsellers-item__name  Животные
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
-
-
-
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-15.svg", alt="")
-							.topsellers-item__name  Бюджет<br> и налоги
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-16.svg", alt="")
-							.topsellers-item__name  Книги
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name Нова пошта
-								.topsellers-item__li-value 52 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Google
-								.topsellers-item__li-value 37 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name portmone.com.ua
-								.topsellers-item__li-value 10 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name Ali_express
-								.topsellers-item__li-value 8 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Facebook
-								.topsellers-item__li-value 8 013 180
-
-
-
-				.topsellers-item
-					.topsellers-item__inner
-						.topsellers-item_arts
-							.topsellers-item__art.topsellers-item__art--1
-							.topsellers-item__art.topsellers-item__art--2
-							.topsellers-item__art.topsellers-item__art--3
-							.topsellers-item__art.topsellers-item__art--4
-						.topsellers-item__top
-							img.topsellers-item__pic(src="images/last-section/Vectorls-icon-17.svg", alt="")
-							.topsellers-item__name  Duty Free
-						.topsellers-item__list
-							.topsellers-item__list-item
-								.topsellers-item__li-name McDonalds
-								.topsellers-item__li-value 12 578 885
-							.topsellers-item__list-item
-								.topsellers-item__li-name Пузата Хата
-								.topsellers-item__li-value 2 713 455
-							.topsellers-item__list-item
-								.topsellers-item__li-name Aroma Kava
-								.topsellers-item__li-value 1 253 728
-							.topsellers-item__list-item
-								.topsellers-item__li-name KFC
-								.topsellers-item__li-value 1 676 519
-							.topsellers-item__list-item
-								.topsellers-item__li-name Lvivcroissants
-								.topsellers-item__li-value 713 180
-
-
-
+								.topsellers-item__li-name NIKE
+								.topsellers-item__li-value 7 691
