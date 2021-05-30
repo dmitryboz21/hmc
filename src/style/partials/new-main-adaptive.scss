@@ -755,8 +755,10 @@
 		&:nth-child(2) {
 			.dshb-stat2-item__inner {}
 
-			.dshb-stat2-item__part {
-				min-width: 283px;
+			@media screen and (min-width: 768px) {
+				.dshb-stat2-item__part {
+					min-width: 283px;
+				}
 			}
 		}
 
