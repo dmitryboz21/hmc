@@ -184,12 +184,12 @@ block main
 
 		// [food, cafe, other, play, mobile, travel, beauty, taxi, communal, auto, dress, fix, cinema, appliances, animals, taxes, book, duty_free] - твои id. В массиве выше их надо вывести разделяя десятки точкой. ниже - запятой и добавляя в конец знак %.
 
-	section.numpurchases
-		.dashboard-container
+	section.numpurchases(data-aos="fade-up")
+		.dashboard-container.dashboard-container--numpurchases
 			.numpurchases-inner
-				h2.dashboard-h2(data-aos="fade-up") Количество покупок в категории
+				h2.dashboard-h2 Количество покупок в категории
 
-				.numpurchases-block(data-aos="fade-up")
+				.numpurchases-block
 					.numpurchases-info.js-numpurchases-info
 						//data-target - это индекс элемента(нумерация с нуля)
 						//style="color:...;" - задаёшь цвет текста при ховере
