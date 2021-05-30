@@ -65,7 +65,6 @@
 		&__more-digits-rouble {}
 
 		&__pic {
-			transition-delay: 0s !important;
 
 			&--1 {
 				right: 14px;
@@ -509,7 +508,6 @@
 		&__more-digits-rouble {}
 
 		&__pic {
-			transition-delay: 0s !important;
 
 			&--1 {
 				right: 18px;
@@ -900,5 +898,40 @@
 			text-align: right;
 			letter-spacing: 0.015em;
 		}
+	}
+}
+
+
+@media screen and (max-width: 344px) {
+
+	.dshb-stat1-item {
+
+		&__pic {
+			transition-delay: 0s !important;
+
+			&--1,
+			&--2,
+			&--3,
+			&--4 {
+				width: 102px;
+				right: 10px;
+			}
+		}
+
+	}
+
+	.dshb-stat1-item__digits {
+		font-size: 41px;
+	}
+
+	.topsellers-item__li-name,
+	.topsellers-item__li-value {
+		font-size: 16px;
+	}
+
+	.dshb-stat2-item__art--5 {
+		display: block;
+		top: 201px;
+		left: 116px;
 	}
 }
