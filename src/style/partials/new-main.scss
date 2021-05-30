@@ -843,12 +843,13 @@ a {
 		padding: 21px 20px 32px 30px;
 	}
 
-	&_arts {}
+	&__arts {}
 
-	&_art {
+	&__art {
 		display: block;
 		position: absolute;
 		box-sizing: border-box;
+		border-radius: 50%;
 
 		&--1 {
 			top: 23%;
@@ -862,7 +863,7 @@ a {
 
 		&--2 {
 			bottom: 2%;
-			left: 44%;
+			left: 45%;
 			width: 17px;
 			height: 17px;
 
@@ -872,7 +873,7 @@ a {
 
 		&--3 {
 			bottom: 44%;
-			left: 56.5%;
+			left: 57.5%;
 			width: 24px;
 			height: 24px;
 
@@ -882,7 +883,7 @@ a {
 
 		&--4 {
 			bottom: 85%;
-			left: 88%;
+			left: 90%;
 			width: 20px;
 			height: 20px;
 
