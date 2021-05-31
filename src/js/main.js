@@ -9,3 +9,5 @@
 
 
 //= partials/main.js
+
+//= partials/square.js

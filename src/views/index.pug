@@ -153,36 +153,8 @@ block main
 								.dshb-stat2-item__type.dshb-stat1-item__description активных клиентов в день
 								.dshb-stat2-item__more-digits.dshb-stat1-item__more-digits 609 632
 						img.dshb-stat2-item__pic.dshb-stat2-item__pic--2(src="images/dshb-stat2-2.png", alt="")
-	script.
-		//массив с начальным и конечным цветом градиентов(начальный цвет - цвет тени с блюром). лучше задавать в rgb или hex
-		const backgroundColorsForGrad = [
 
 
-			['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
-			['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
-			['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
-			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-			['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
-			['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
-			['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
-			['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
-			['rgb(31,87,211)', 'rgb(18,75,202)'],//син
-			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-			['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
-			['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
-			['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
-			['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
-			['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-			['rgb(31,87,211)', 'rgb(18,75,202)'],//син
-			['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
-			['rgb(185,43,255)', 'rgb(192,49,255)']//розов
-
-		];
-		//Если что, эти значения относительны, и приводятся к проценту от их суммы, так что их сумма не должна быь равна 100. Эта фишка на случай если самые мелкие окажутся слишком тонкими, тогда ты на бекенде сможешь выводитьих сюда например через функцию max(реальное_значение, какая_то_минималка), чтобы слишком мелкие были больше и одного размера
-		//UPD: слишком мелкие значения вызывали баги. Теперь те, что меньше 0,5% равняются 0,5%; 'это позволило избежать бага, и лучше отображать маленькие элементы(Это как раз соответствует макету), так что не парься, и выводи просто проценты'
-		const chartData = [41.27,11.73,7.28,6.57,6.06,5.23,5.10,4.20,3.99,3.98,1.33,1.30,0.59,0.56,0.35,0.23,0.17,0.05];
-
-		// [food, cafe, other, play, mobile, travel, beauty, taxi, communal, auto, dress, fix, cinema, appliances, animals, taxes, book, duty_free] - твои id. В массиве выше их надо вывести разделяя десятки точкой. ниже - запятой и добавляя в конец знак %.
 
 	section.numpurchases(data-aos="fade-up")
 		.dashboard-container.dashboard-container--numpurchases
@@ -267,8 +239,70 @@ block main
 							.numpurchases-info-item__progess(style=" background-color: #A15CE6;")
 
 					#numpurchases-chart-wrap.numpurchases-chart-wrap
-						img(src="images/chart-placeholder.jpg", alt="")
+						.square-chart
+							#block1.square-chart-item.js-square-chart-item
+							#block2.square-chart-item.js-square-chart-item
+							#block3.square-chart-item.js-square-chart-item
+							#block4.square-chart-item.js-square-chart-item
+							#block5.square-chart-item.js-square-chart-item
+							#block6.square-chart-item.js-square-chart-item
+							#block7.square-chart-item.js-square-chart-item
+							#block8.square-chart-item.js-square-chart-item
+							#block9.square-chart-item.js-square-chart-item
+							#block10.square-chart-item.js-square-chart-item
+							#block11.square-chart-item.js-square-chart-item
+							#block12.square-chart-item.js-square-chart-item
+							#block13.square-chart-item.js-square-chart-item
+							#block14.square-chart-item.js-square-chart-item
+							#block15.square-chart-item.js-square-chart-item
+							#block16.square-chart-item.js-square-chart-item
+							#block17.square-chart-item.js-square-chart-item
+							#block18.square-chart-item.js-square-chart-item
+						script.
+							//массив с начальным и конечным цветом градиентов. лучше задавать в rgb или hex
+							/*const backgroundColorsForGrad = [
+								['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
+								['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+								['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+								['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
+								['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+								['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+								['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+								['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+								['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+								['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+								['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+								['rgb(185,43,255)', 'rgb(192,49,255)']//розов
 
+							];*/
+							const backgroundColorsForGrad = [
+								['#006AFE', '#38B2F1'],//син
+								['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
+								['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+								['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+								['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
+								['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+								['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+								['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+								['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+								['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+								['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+								['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+								['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+								['rgb(185,43,255)', 'rgb(192,49,255)']//розов
+
+							];
+							let area_raw = [100 , 80 , 70 , 60 , 55 , 50 , 45 , 40 , 30 , 28 , 25 , 22 , 18 , 16 , 14 , 12 , 10 , 10 ];
 	section.topsellers
 		.dashboard-container.dashboard-container--topsellers
 			h2.dashboard-h2(data-aos="fade-up") Топ 5 продавцов<br class="dm1"> по количеству покупок

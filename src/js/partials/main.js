@@ -15,6 +15,9 @@ $(document).ready(function () {
 		once: true
 	});
 
+	function setSquare(id){
+		$('#block'+(id+1)).addClass('square-chart-item--active').siblings('.square-chart-item').removeClass('square-chart-item--active')
+	}
 
 	numpurchasesInfoItemsLen = $('.numpurchases-info-item').length;
 
@@ -32,7 +35,7 @@ $(document).ready(function () {
 
 			elem.addClass('numpurchases-info-item--active');
 			//тут вызови функцию отрисовки квадрата(currentIndexOfChart - его id)
-
+			setSquare(currentIndexOfChart);
 		}
 		chartChangeInterval = setInterval(function () {
 			var newIndex;
@@ -45,6 +48,7 @@ $(document).ready(function () {
 
 
 			//тут вызови функцию отрисовки квадрата(newIndex - его id)
+			setSquare(newIndex);
 			currentIndexOfChart = newIndex;
 		}, 3000);
 	}
@@ -57,23 +61,21 @@ $(document).ready(function () {
 		$(this).addClass('numpurchases-info-item--active')
 			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active')
 
-		//тут вызови функцию отрисовки квадрата(newIndex - его id)
-
 		currentIndexOfChart = parseInt($(this).attr('data-target'));
+		setSquare(currentIndexOfChart);
 		clearInterval(chartChangeInterval);
 		chartChangeTime();
 	});
 
 
-	$('.js-square').click(function () {//тут обрабатывай клик по квадрату
-		var newId;//сюда запиши id квадрата
+	$('.js-square-chart-item').click(function () {//тут обрабатывай клик по квадрату
+		var newId=$(this).index();//сюда запиши id квадрата
 		elem = $('.numpurchases-info-item[data-target="' + newId + '"]');
 		elem.addClass('numpurchases-info-item--active')
 			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active');
 
-		//тут вызови функцию отрисовки квадрата(newIndex - его id)
-
-		currentIndexOfChart = newIndex;
+		setSquare(newId);
+		currentIndexOfChart = newId;
 		clearInterval(chartChangeInterval);
 		chartChangeTime();
 	});

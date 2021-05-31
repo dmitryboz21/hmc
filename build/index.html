@@ -192,38 +192,6 @@
           </div>
         </div>
       </section>
-      <script>
-        //массив с начальным и конечным цветом градиентов(начальный цвет - цвет тени с блюром). лучше задавать в rgb или hex
-        const backgroundColorsForGrad = [
-        
-        
-        	['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
-        	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
-        	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
-        	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-        	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
-        	['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
-        	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
-        	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
-        	['rgb(31,87,211)', 'rgb(18,75,202)'],//син
-        	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-        	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
-        	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
-        	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
-        	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
-        	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
-        	['rgb(31,87,211)', 'rgb(18,75,202)'],//син
-        	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
-        	['rgb(185,43,255)', 'rgb(192,49,255)']//розов
-        
-        ];
-        //Если что, эти значения относительны, и приводятся к проценту от их суммы, так что их сумма не должна быь равна 100. Эта фишка на случай если самые мелкие окажутся слишком тонкими, тогда ты на бекенде сможешь выводитьих сюда например через функцию max(реальное_значение, какая_то_минималка), чтобы слишком мелкие были больше и одного размера
-        //UPD: слишком мелкие значения вызывали баги. Теперь те, что меньше 0,5% равняются 0,5%; 'это позволило избежать бага, и лучше отображать маленькие элементы(Это как раз соответствует макету), так что не парься, и выводи просто проценты'
-        const chartData = [41.27,11.73,7.28,6.57,6.06,5.23,5.10,4.20,3.99,3.98,1.33,1.30,0.59,0.56,0.35,0.23,0.17,0.05];
-        
-        // [food, cafe, other, play, mobile, travel, beauty, taxi, communal, auto, dress, fix, cinema, appliances, animals, taxes, book, duty_free] - твои id. В массиве выше их надо вывести разделяя десятки точкой. ниже - запятой и добавляя в конец знак %.
-        
-      </script>
       <section class="numpurchases" data-aos="fade-up">
         <div class="dashboard-container dashboard-container--numpurchases">
           <div class="numpurchases-inner">
@@ -323,7 +291,74 @@
                   <div class="numpurchases-info-item__progess" style=" background-color: #A15CE6;"></div>
                 </div>
               </div>
-              <div class="numpurchases-chart-wrap" id="numpurchases-chart-wrap"><img src="images/chart-placeholder.jpg" alt=""></div>
+              <div class="numpurchases-chart-wrap" id="numpurchases-chart-wrap">
+                <div class="square-chart">
+                  <div class="square-chart-item js-square-chart-item" id="block1"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block2"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block3"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block4"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block5"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block6"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block7"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block8"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block9"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block10"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block11"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block12"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block13"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block14"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block15"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block16"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block17"></div>
+                  <div class="square-chart-item js-square-chart-item" id="block18"></div>
+                </div>
+                <script>
+                  //массив с начальным и конечным цветом градиентов. лучше задавать в rgb или hex
+                  /*const backgroundColorsForGrad = [
+                  	['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
+                  	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+                  	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+                  	['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
+                  	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+                  	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+                  	['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+                  	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+                  	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+                  	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+                  	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+                  	['rgb(185,43,255)', 'rgb(192,49,255)']//розов
+                  
+                  ];*/
+                  const backgroundColorsForGrad = [
+                  	['#006AFE', '#38B2F1'],//син
+                  	['rgb(184,248,170)', 'rgb(98,219,70)'],//зел
+                  	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+                  	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+                  	['rgb(125,228,101)', 'rgb(98,219,70)'],//зел
+                  	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+                  	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(255,200,50)', 'rgb(255,202,51)'],//желт
+                  	['rgb(79,209,208)', 'rgb(77,209,208)'],//бирюз
+                  	['rgb(185,43,255)', 'rgb(192,49,255)'],//розов
+                  	['rgb(255,142,30)', 'rgb(255,135,16)'],//оран
+                  	['rgb(33,164,88)', 'rgb(34,165,89)'],//тёмзел
+                  	['rgb(31,87,211)', 'rgb(18,75,202)'],//син
+                  	['rgb(226,37,65)', 'rgb(228,41,69)'],//кр
+                  	['rgb(185,43,255)', 'rgb(192,49,255)']//розов
+                  
+                  ];
+                  let area_raw = [100 , 80 , 70 , 60 , 55 , 50 , 45 , 40 , 30 , 28 , 25 , 22 , 18 , 16 , 14 , 12 , 10 , 10 ];
+                </script>
+              </div>
             </div>
           </div>
         </div>
