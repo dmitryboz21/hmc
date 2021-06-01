@@ -7,7 +7,7 @@ var chartChangeInterval = 0;
 var stopPercentAnimFlag = false;
 var $flagRunAnim;
 var width;
-
+var $flagBodyScrolled;
 
 $(document).ready(function () {
 	AOS.init({
@@ -15,8 +15,8 @@ $(document).ready(function () {
 		once: true
 	});
 
-	function setSquare(id){
-		$('#block'+(id+1)).addClass('square-chart-item--active').siblings('.square-chart-item').removeClass('square-chart-item--active')
+	function setSquare(id) {
+		$('#block' + (id + 1)).addClass('square-chart-item--active').siblings('.square-chart-item').removeClass('square-chart-item--active')
 	}
 
 	numpurchasesInfoItemsLen = $('.numpurchases-info-item').length;
@@ -69,7 +69,7 @@ $(document).ready(function () {
 
 
 	$('.js-square-chart-item').click(function () {//тут обрабатывай клик по квадрату
-		var newId=$(this).index();//сюда запиши id квадрата
+		var newId = $(this).index();//сюда запиши id квадрата
 		elem = $('.numpurchases-info-item[data-target="' + newId + '"]');
 		elem.addClass('numpurchases-info-item--active')
 			.siblings('.numpurchases-info-item--active').removeClass('numpurchases-info-item--active');
@@ -87,6 +87,20 @@ $(document).ready(function () {
 
 
 	$flagRunAnim = false;
+	$flagBodyScrolled = false;
+
+	if (window.matchMedia("(min-width: 1341px)").matches) {
+		$('body').addClass('preventscroll');
+
+		setTimeout(function () {
+			$('body').removeClass('preventscroll');
+		}, 2600);
+
+	}
+
+
+
+
 	$(document).scroll(function () {
 		if (!$flagRunAnim) {//когда доскроллим до блока с chart - начинаем поочерёдно сменять элементы
 			var scrollTop = $(document).scrollTop() + $(window).height();
@@ -103,6 +117,12 @@ $(document).ready(function () {
 
 			}
 		}
+
+		/*if (!$flagBodyScrolled) {
+			$('body').addClass('removeTrDelay');
+			$flagBodyScrolled = true;
+		}*/
+
 	});
 
 

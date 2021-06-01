@@ -573,8 +573,8 @@ a {
 	//pointer-events: none !important;
 	width: 643px;
 	margin-left: 13.2%;
-    position: relative;
-    z-index: 99;
+	position: relative;
+	z-index: 99;
 
 	&::before {
 		content: '';
@@ -620,7 +620,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	width: 157px;
-    max-width: 45%;
+	max-width: 45%;
 }
 
 .numpurchases-chi-item {
@@ -830,3 +830,4 @@ a {
 	}
 
 }
+
