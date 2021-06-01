@@ -88,7 +88,7 @@ $(document).ready(function () {
 
 	$flagRunAnim = false;
 	$flagBodyScrolled = false;
-
+/*
 	if (window.matchMedia("(min-width: 1341px)").matches) {
 		$('body').addClass('preventscroll');
 
@@ -96,7 +96,7 @@ $(document).ready(function () {
 			$('body').removeClass('preventscroll');
 		}, 2600);
 
-	}
+	}*/
 
 
 
